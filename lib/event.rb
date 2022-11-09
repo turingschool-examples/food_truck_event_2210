@@ -16,4 +16,11 @@ class Event
       food_truck.name
     end
   end
+
+  def food_trucks_that_sell(item)
+    selling_food_trucks = @food_trucks.find_all do |food_truck|
+      food_truck.inventory.include?(item)
+    end
+    selling_food_trucks
+  end
 end

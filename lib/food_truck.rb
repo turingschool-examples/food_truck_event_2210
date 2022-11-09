@@ -7,7 +7,11 @@ class FoodTruck
   end
 
   def check_stock(item)
-    @inventory.values.sum
+    if @inventory.keys.include?(item)
+      @inventory[item]
+    else
+      0
+    end
   end
 
   def stock(item, quantity)

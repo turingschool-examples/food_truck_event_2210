@@ -5,21 +5,26 @@ class FoodTruck
 
   def initialize(name)
     @name = name
-    @inventory = {}
+    @inventory = Hash.new(0)
   end
 
   def check_stock(item)
-    # require 'pry'; binding.pry
-    if inventory.keys.any? do |key|
-        key = item
-        puts key.value
-      end
+    if key_match(item)
+      inventory[item]
     else
       0
+    end 
+  end
+
+  def key_match(item)
+    inventory.keys.any? do |key|
+      key = item
     end
   end
 
   def stock(item, amount)
-    amount = inventory[:item]
+    # require 'pry' ; binding.pry
+    inventory[item] += amount
+
   end
 end

@@ -6,4 +6,7 @@ class FoodTruck
     @inventory = {}
   end 
 
+  def check_stock(item)
+   stock = 0
+  end 
 end

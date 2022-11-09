@@ -25,6 +25,22 @@ RSpec.describe FoodTruck do
       ft.stock(it1, 20)
 
       expect(ft.inventory).to eq({it1 => 20})
+
+      ft.stock(it1, 100)
+      ft.stock(it2, 46)
+      expect(ft.inventory).to eq({it1 => 120, it2 => 46})
+    end
+  end
+
+  describe '#check_stock()' do
+    it 'returns the quantity in stock for given item' do
+      ft.stock(it1, 100)
+      ft.stock(it2, 46)
+      it3 = Item.new({name: 'Chocolate Chip Ice Cream(3 scoops)', price: '$2.99'})
+
+      expect(ft.check_stock(it1)).to eq(100)
+      expect(ft.check_stock(it2)).to eq(46)
+      expect(ft.check_stock(it3)).to eq(0)
     end
   end
 end

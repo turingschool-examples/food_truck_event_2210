@@ -4,7 +4,7 @@ class Item
               
   def initialize(attributes)
     @name = attributes[:name]
-    @price = attributes[:price]
+    @price = money_parse(attributes[:price])
   end
 
   def money_parse(string)

@@ -15,11 +15,17 @@ class FoodTruck
     end
   end
 
-  def stock(item, count)
+  def stock(item, quantity)
     if @inventory[item].nil?
-      @inventory[item] = count
+      @inventory[item] = quantity
     else 
-      @inventory[item] += count
+      @inventory[item] += quantity
+    end
+  end
+
+  def potential_revenue
+    @inventory.sum do |item, quantity|
+      item.price * quantity
     end
   end
 end

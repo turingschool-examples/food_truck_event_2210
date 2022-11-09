@@ -68,19 +68,8 @@ RSpec.describe Event do
     event.add_food_truck(food_truck1)
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
-
+    
     expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
     expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
   end
 end
-
-
-
-# food_truck1.potential_revenue
-#=> 148.75
-
-# food_truck2.potential_revenue
-#=> 345.00
-
-# food_truck3.potential_revenue
-#=> 243.75

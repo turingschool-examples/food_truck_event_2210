@@ -45,7 +45,7 @@ class Event
   end
 
   def item_names
-    event_items.keys.map { |item| item.name}
+    event_items.keys.map { |item| item.name}.sort
   end
 
   def total_inventory

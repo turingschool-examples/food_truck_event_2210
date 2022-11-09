@@ -63,7 +63,7 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
 
-    expect(@event.item_names).to eq([@item1.name, @item2.name, @item4.name, @item3.name])
+    expect(@event.item_names).to eq([@item2.name, @item4.name, @item1.name, @item3.name])
   end
 
   it 'can return all items at an event with total quantity and food trucks that sell that item' do

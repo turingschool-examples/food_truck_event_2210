@@ -21,4 +21,10 @@ class Event
   def all_items
     @food_trucks.flat_map { |food_truck| food_truck.all_items }.uniq
   end
+
+  def overstocked_items
+    all_items.select do |item| 
+      food_trucks_that_sell(item) > 1 && total_quantity > 50
+    end
+  end
 end

@@ -9,4 +9,10 @@ RSpec.describe Item do
       expect(item1.price ).to eq '$3.75'
     end
   end
+
+  describe '#price_to_f' do
+    it 'converts string price to float' do
+      expect(item1.price_to_f).to eq 3.75
+    end
+  end
 end

@@ -31,7 +31,7 @@ class Event
 
   def all_event_items
     @food_trucks.flat_map do |food_truck|
-      food_truck.inventory.keys
+      food_truck.items
     end.uniq
   end
 

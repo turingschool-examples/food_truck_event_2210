@@ -1,3 +1,4 @@
+require 'pry'
 require './lib/item'
 
 class FoodTruck
@@ -18,5 +19,13 @@ class FoodTruck
 
   def stock(item, amount)
   inventory[item] += amount
+  end
+
+  def potential_revenue
+    total = []
+      inventory.each do |item, quantity|
+        total << item.info[:price].delete("$").to_f * quantity
+      end
+    total.sum
   end
 end

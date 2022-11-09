@@ -24,4 +24,8 @@ class FoodTruck
   def sells?(item)
     !!@inventory[item]
   end
+
+  def all_items
+    @inventory.keys
+  end
 end

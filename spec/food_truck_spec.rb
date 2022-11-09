@@ -45,4 +45,12 @@ RSpec.describe FoodTruck do
       expect(food_truck.sells?(item2)).to be false
     end
   end
+
+  describe '#all_items' do
+    it 'returns an array of all items stocked by the food_truck' do
+      food_truck.stock(item1, 2)
+      food_truck.stock(item2, 3)
+      expect(food_truck.all_items).to eq [item1, item2]
+    end
+  end
 end

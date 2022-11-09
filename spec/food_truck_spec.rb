@@ -16,6 +16,7 @@ describe FoodTruck do
   describe '#stock' do
     it 'adds an item to the inventory hash with a stock count and updates the stock count if the item already exists' do
       item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
+      item2 = Item.new({ name: 'Apple Pie (Slice)', price: '$2.50' })
       ft = FoodTruck.new('Rocky Mountain Pies')
 
       ft.stock(item1, 30)

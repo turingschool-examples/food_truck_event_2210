@@ -1,17 +1,28 @@
+require 'pry'
 require './lib/item'
+require './lib/food_truck'
+require './lib/event'
 
-RSpec.describe Item do
-  describe '#iteration 1' do
-    let(:item1){Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
+RSpec.describe Event do
+  describe '#iteration 2' do
+    let(:item1){Item.new({name: 'Peach Pie (Slice)', price: '$3.75'})}
     let(:item2){Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
+    let(:item3){Item.new({name: 'Peach-Raspberry Nice Cream', price: '$5.30'})}
+    let(:item4){Item.new({name: 'Banana Nice Cream', price: '$4.25'})}
+    
+    let(:food_truck1){FoodTruck.new('Rocky Mountain Pies')}
+    let(:food_truck2){FoodTruck.new("Ba-Nom-a-Nom")}
+    let(:food_truck3){FoodTruck.new("Palisade Peach Shack")}
+    
+    let(:event){Event.new('South Pearl Street Farmers Market')}
     
     it 'exists and has readable attributes' do
-      expect(item1).to be_a(Item)
-      expect(item2).to be_a(Item)
-      expect(item1.name).to eq('Peach Pie (Slice)')
-      expect(item2.name).to eq('Apple Pie (Slice)')
-      expect(item1.price).to eq('$3.75')
-      expect(item2.price).to eq('$2.50')
+      expect(event).to be_an(Event)
+      expect(event.food_trucks).to eq([])
     end
+    
   end
 end
+# it '#' do
+#   expect().to eq()
+# end

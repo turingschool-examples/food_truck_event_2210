@@ -95,4 +95,26 @@ RSpec.describe Event do
       expect(event.full_menu).to eq(['Cortado', 'Latte', 'Pumpkin Pie (Slice)', 'Rhubarb Pie (Slice)'])
     end
   end
+
+  describe '#total_inventory' do
+    it 'returns a hash with all items, each items quantity, and list of trucks selling the item' do
+      expect(event.total_inventory).to eq({})
+
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.total_inventory).to eq({
+        it1 => [24, [ft1, ft2]],
+        it2 => [30, [ft1]],
+        it3 => [120, [ft1, ft2]],
+        it4 => [70, [ft2]]
+        })
+    end
+  end
 end

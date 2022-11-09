@@ -1,13 +1,31 @@
-# Food Truck Event
+## Iteration 3 - Items sold at the Event
+Use TDD to update the `Event` class so that it adds the following functionality:
 
-## Instructions
+ 1. Return a list of overstocked Items for an Event. An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
+ 1. An Event can return a list of *names* of all items the FoodTrucks have in stock, sorted alphabetically. This list should not include any duplicate items.
+ 1. An Event can return a hash of total inventory that reports the available inventory of all items sold at the event. Specifically, it should include:
+    * All items available for sale, and each item should identify the total inventory/quantity for that item, as well as, a list of food_trucks that sell that item.
 
-* Fork this Repository
-* Clone your forked repo to your computer.
-* Complete the activity below.
-* Push your solution to your forked repo
-* Submit a pull request from your repository to this repository
-  * Put your name in your PR!
+
+## Iteration 4 - Selling Items
+Use TDD to update the `Event` class so that it adds the following functionality:
+
+ 1. An event has a start date that is returned in the format of 'dd/mm/yyyy'. The addition of a date to the event should NOT break any previous tests. Use a stub to test this in with a date that is IN THE PAST.
+ 1. An event can sell an item of a given quantity. There are two possible outcomes for selling an item:
+    * If the Event does not have enough of the item in stock to satisfy the given quantity, this method should return `false`.
+    * If the Event has enough of the item in stock to satisfy the given quantity, this method should return `true`. Additionally, this method should reduce the stock of the FoodTrucks. It should look through the FoodTrucks in the order they were added and sell the item from the first FoodTruck with that item in stock. If that FoodTruck does not have enough stock to satisfy the given quantity, the FoodTruck's entire stock of that item will be depleted, and the remaining quantity will be sold from the next food_truck with that item in stock. It will follow this pattern until the entire quantity requested has been sold.
+
+
+    # Food Truck Event
+
+    ## Instructions
+
+    * Fork this Repository
+    * Clone your forked repo to your computer.
+    * Complete the activity below.
+    * Push your solution to your forked repo
+    * Submit a pull request from your repository to this repository
+      * Put your name in your PR!
 
 ## Iteration 1 - Items & FoodTrucks
 
@@ -71,7 +89,6 @@ pry(main)> food_truck.stock(item2, 12)
 pry(main)> food_truck.inventory
 #=> {#<Item:0x007f9c56740d48...> => 55, #<Item:0x007f9c565c0ce8...> => 12}
 ```
-
 ## Iteration 2 - Event and FoodTrucks
 
 Graded Items:
@@ -166,20 +183,3 @@ pry(main)> food_truck2.potential_revenue
 pry(main)> food_truck3.potential_revenue
 #=> 243.75  
 ```
-
-## Iteration 3 - Items sold at the Event
-Use TDD to update the `Event` class so that it adds the following functionality:
-
- 1. Return a list of overstocked Items for an Event. An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
- 1. An Event can return a list of *names* of all items the FoodTrucks have in stock, sorted alphabetically. This list should not include any duplicate items.
- 1. An Event can return a hash of total inventory that reports the available inventory of all items sold at the event. Specifically, it should include:
-    * All items available for sale, and each item should identify the total inventory/quantity for that item, as well as, a list of food_trucks that sell that item.
-
-
-## Iteration 4 - Selling Items
-Use TDD to update the `Event` class so that it adds the following functionality:
-
- 1. An event has a start date that is returned in the format of 'dd/mm/yyyy'. The addition of a date to the event should NOT break any previous tests. Use a stub to test this in with a date that is IN THE PAST.
- 1. An event can sell an item of a given quantity. There are two possible outcomes for selling an item:
-    * If the Event does not have enough of the item in stock to satisfy the given quantity, this method should return `false`.
-    * If the Event has enough of the item in stock to satisfy the given quantity, this method should return `true`. Additionally, this method should reduce the stock of the FoodTrucks. It should look through the FoodTrucks in the order they were added and sell the item from the first FoodTruck with that item in stock. If that FoodTruck does not have enough stock to satisfy the given quantity, the FoodTruck's entire stock of that item will be depleted, and the remaining quantity will be sold from the next food_truck with that item in stock. It will follow this pattern until the entire quantity requested has been sold.

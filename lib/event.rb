@@ -21,7 +21,7 @@ class Event
   end
 
   def overstocked_items
-    items = all_item_objects.find_all { |item| total_quantity(item) > 2 && food_trucks_that_sell(item).count > 1}
+    items = all_item_objects.find_all { |item| total_quantity(item) > 50 && food_trucks_that_sell(item).count > 1}
     items.uniq
   end
 
@@ -36,7 +36,7 @@ class Event
       truck_items = food_truck.inventory.map { |item, quantity| item }
       all_items_offered.push(truck_items)
     end
-    all_items_offered = all_items_offered.flatten.uniq
+    all_items_offered.flatten.uniq
   end
 
   def total_quantity(item)

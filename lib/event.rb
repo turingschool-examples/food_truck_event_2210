@@ -38,26 +38,40 @@ class Event
   end
 
   def menu
-    items = food_trucks.flat_map do |truck|
-      truck.inventory.keys
-    end.uniq
     items.map { |item| item.name }.sort
   end
 
   def inventory
-    items = food_trucks.flat_map do |truck|
-        truck.inventory.keys
-      end.uniq
-    inventory = Hash[(items.map do|item|
-         [item,[(food_trucks_that_sell(item).sum do|truck|
-        truck.check_stock(item)
-    end),
-    
-    food_trucks_that_sell(item).flat_map do|truck|
-        truck.name
-    end]]end)]
-    inventory.transform_values!{|v|v.flatten}
-    inventory.delete_if {|k,v| v[0] == 0}
+    inventory = Hash[(items.map do |item|
+                        [item, inventory_values(item)]
+                      end)]
+    inventory.transform_values! { |v| v.flatten }
+    inventory.delete_if { |_k, v| v[0] == 0 }
+  end
 
+  def inventory_values(item)
+    [total_quantity(item), list_trucks_that_sell(item)]
+  end
+
+  def list_trucks_that_sell(item)
+    food_trucks_that_sell(item).flat_map do |truck|
+      truck.name
+    end
+  end
+
+  def total_quantity(item)
+    food_trucks_that_sell(item).sum do |truck|
+      truck.check_stock(item)
+    end
+  end
+
+  def items
+    items = food_trucks.flat_map do |truck|
+      truck.inventory.keys
+    end.uniq
+  end
+
+  def sell_bulk(item, n)
+    n <= inventory[item][0]
   end
 end

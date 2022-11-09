@@ -18,7 +18,8 @@ describe Item do
 
       expected = item1.money_parse('$3.75')
 
-      expect(expected).to eq 375
+      expect(expected).to eq 3.75
+      expect(expected.class).to eq Float
     end
   end
 end

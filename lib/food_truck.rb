@@ -13,11 +13,17 @@ class FoodTruck
     end
   end
 
-  def stock(item, new_quantity)
+  def stock(item, new_qty)
     if @inventory[item] == NIL
-      @inventory[item] = new_quantity
+      @inventory[item] = new_qty
     elsif @inventory[item] != NIL 
-      @inventory[item] += new_quantity 
+      @inventory[item] += new_qty 
     end
-  end 
+  end
+  
+  def potential_revenue
+    @inventory.sum do |item, qty|
+     item.price * qty
+    end
+  end
 end

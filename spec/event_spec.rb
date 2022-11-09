@@ -96,6 +96,44 @@ RSpec.describe Event do
     end
   end
 
+  describe '#all_items' do
+    it 'returns array of all items in event' do
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.all_items).to be_a Array
+      event.all_items.each do |item|
+        expect(item).to be_a Item
+      end
+      expect(event.all_items.uniq.size).to eq(event.all_items.size)
+    end
+  end
+
+  describe '#all_items_hash' do
+    it 'returns formatted hash with all items as keys to help total_inventory' do
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.all_items_hash).to be_a Hash
+      event.all_items_hash.each do |key, value|
+        expect(key).to be_a Item
+        expect(value).to eq([0, []])
+      end
+    end
+  end
+
   describe '#total_inventory' do
     it 'returns a hash with all items, each items quantity, and list of trucks selling the item' do
       expect(event.total_inventory).to eq({})

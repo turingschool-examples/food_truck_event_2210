@@ -56,4 +56,16 @@ describe FoodTruck do
       expect(ft.potential_revenue).to eq(142.50)
     end
   end
+
+  describe '#items_sold_by_name' do
+    it 'returns an array of all item names in inventory' do
+      item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
+      item2 = Item.new({ name: 'Apple Pie (Slice)', price: '$2.50' })
+      ft = FoodTruck.new('Rocky Mountain Pies')
+      ft.stock(item1, 30)
+      ft.stock(item2, 12)
+
+      expect(ft.items_sold_by_name).to eq(['Peach Pie (Slice)', 'Apple Pie (Slice)'])
+    end
+  end
 end

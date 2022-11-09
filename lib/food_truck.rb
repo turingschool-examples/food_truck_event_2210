@@ -22,4 +22,10 @@ class FoodTruck
       (item.price[1..].to_f * qty).round(2)
     end
   end
+
+  def items_sold_by_name
+    inventory.map do |item|
+      item[0].name
+    end
+  end
 end

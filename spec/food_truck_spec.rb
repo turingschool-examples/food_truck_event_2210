@@ -9,12 +9,14 @@ RSpec.describe FoodTruck do
     it 'exists and has readable attributes' do
       expect(food_truck).to be_a FoodTruck
       expect(food_truck.name).to eq 'Rocky Mountain Pies'
-      expect(food_truck.inventory).to eq {}
+      expect(food_truck.inventory).to eq({})
     end
   end
 
   describe '#check_stock' do
     it 'returns the total number of a given item that the food truck has' do
+      food_truck.stock(item1, 1)
+      food_truck.stock(item2, 2)
       expect(food_truck.check_stock(item1)).to eq 1
       expect(food_truck.check_stock(item2)).to eq 2
     end
@@ -24,7 +26,7 @@ RSpec.describe FoodTruck do
     it 'adds an item and an amount of that item to the inventory' do
       food_truck.stock(item1, 2)
       food_truck.stock(item2, 3)
-      expect(food_truck.inventory).to eq { item1: 2, item2: 3 }
+      expect(food_truck.inventory).to eq({ item1 => 2, item2 => 3 })
     end
   end
 end

@@ -20,14 +20,6 @@ class Event
     end
   end
 
-  # def find_all_foodtrucks
-  #   food_trucks.find_all do |foodtruck|
-  #     foodtruck.inventory.keys.find_all do |key|
-  #       key.info[:name] == item[:name]
-  #     end
-  #   end
-  # end
-
   def food_trucks_that_sell(item)
     food = []
     food_trucks.each do |foodtruck|
@@ -38,5 +30,31 @@ class Event
       end
     end
     food
+  end
+
+  def food_truck_item_quantity(item)
+    quantity = []
+    food_trucks.each do |food_truck|
+      quantity << food_truck.check_stock(item)
+    end
+    quantity.compact.sum
+  end
+
+  def over_stocked_item?(item)
+    x = food_trucks_that_sell(item).count
+    if (x > 1) && food_truck_item_quantity(item)
+      return true
+    else false
+    end
+  end
+
+  def food_truck_item_names
+    item_names = []
+    food_trucks.each do |food_truck|
+      food_truck.inventory.keys.each do |item|
+        item_names << item.info[:name]
+      end
+    end
+    item_names.uniq
   end
 end

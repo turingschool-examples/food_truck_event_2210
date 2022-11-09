@@ -120,10 +120,15 @@ describe Event do
 
   describe 'start_date' do
     it 'returns the start date' do
-      event = double("event stub")
+      start_date_stub = double("date stub")
 
-      allow(event).to receive(:start_date).and_return("01/07/1985")
-      expect(event.start_date).to eq("01/07/1985")
+      allow(start_date_stub).to receive(:date).and_return("01/07/1985")
+      event = Event.new("South Pearl Street Farmers Market",start_date_stub)
+      expect(event.start_date.date).to eq("01/07/1985")
     end
+  end
+
+  describe '#sell_quantity' do
+
   end
 end

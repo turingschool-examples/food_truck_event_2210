@@ -6,7 +6,7 @@ class Event
               :food_trucks,
               :start_date
 
-  def initialize(name, start_date = '')
+  def initialize(name, start_date = nil)
     @name = name
     @food_trucks = []
     @start_date = start_date
@@ -63,5 +63,9 @@ class Event
       total_inventory[item] = [quantity,food_trucks_that_sell(item)]
     end
     total_inventory
+  end
+
+  def sell_quantity
+    
   end
 end

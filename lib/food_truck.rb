@@ -23,7 +23,7 @@ class FoodTruck
     @inventory.include?(item)
   end
   
-  def inventory_value
+  def potential_revenue
     @inventory.sum { |item, quantity| item.price * quantity.to_f}
   end
 end

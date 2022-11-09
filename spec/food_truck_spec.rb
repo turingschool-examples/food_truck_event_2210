@@ -55,7 +55,7 @@ describe FoodTruck do
     end
   end
 
-  describe '#inventory_value' do
+  describe '#potential_revenue' do
     it 'calculates all current inventory value' do
       food_truck = FoodTruck.new('Rocky Mountain Pies')
       item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
@@ -67,7 +67,11 @@ describe FoodTruck do
       food_truck.stock(item2, 1)
 
       expect(food_truck.check_stock(item2)).to eq(1)
-      expect(food_truck.inventory_value).to eq(6.25)
+      expect(food_truck.potential_revenue).to eq(6.25)
+      
+      food_truck.stock(item2, 1)
+
+      expect(food_truck.potential_revenue).to eq(8.75)
     end
   end
 end

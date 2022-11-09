@@ -50,4 +50,17 @@ class Event
     dupes_over_50
   end
 
+  def item_names
+    food_truck_inventory = @food_trucks.map do |truck|
+      truck.inventory
+    end
+    items = []
+    food_truck_inventory.each do |inventory|
+      inventory.keys.each do |item|
+        items << item.name
+      end
+    end
+    items.uniq.sort 
+  end
+
 end

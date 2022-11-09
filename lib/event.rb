@@ -35,4 +35,15 @@ class Event
   def all_items_by_name
     all_items.map { |item| item.name }.sort
   end
+
+  def item_index
+    hash = {}
+    all_items.each do |item|
+      hash[item] = {
+        total_quantity: total_quantity(item),
+        sold_by: food_trucks_that_sell(item)
+      }
+    end
+    hash
+  end
 end

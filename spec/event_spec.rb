@@ -107,8 +107,8 @@ RSpec.describe Event do
       event.add_food_truck(food_truck2)
       expect(event.item_index).to eq(
         {
-          item1: { total_quantity: 65, sold_by: [food_truck1, food_truck2] },
-          item2: { total_quantity: 55, sold_by: [food_truck1, food_truck2] }
+          item1 => { total_quantity: 65, sold_by: [food_truck1, food_truck2] },
+          item2 => { total_quantity: 55, sold_by: [food_truck1, food_truck2] }
         }
       )
     end

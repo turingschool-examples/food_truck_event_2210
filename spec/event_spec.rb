@@ -16,13 +16,21 @@ RSpec.describe Event do
     
     let(:event){Event.new('South Pearl Street Farmers Market')}
     
+    before(:each) do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)    
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+    end
+      
     it 'exists and has readable attributes' do
       expect(event).to be_an(Event)
       expect(event.name).to eq('South Pearl Street Farmers Market')
       expect(event.food_trucks).to eq([])
     end
     
-    it 'can #add_food_truck' do
+    it 'can #add_food_truck to the event' do
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
@@ -30,6 +38,14 @@ RSpec.describe Event do
       expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
     end
     
+    xit 'can return an array of #food_truck_names' do
+      expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+    end
+    
+    xit 'can find #food_trucks_that_sell a specified item' do
+      expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
+      expect(event.food_trucks_that_sell(item4)).to eq([food_truck4])
+    end
   end
 end
 # it '#' do

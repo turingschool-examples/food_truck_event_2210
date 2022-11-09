@@ -11,4 +11,14 @@ describe Item do
       expect(item1.price).to eq '$3.75'
     end
   end
+
+  describe '#money_parse' do
+    it 'looks through a string of money and returns an int' do
+      item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+
+      expected = item1.money_parse('$3.75')
+
+      expect(expected).to eq 375
+    end
+  end
 end

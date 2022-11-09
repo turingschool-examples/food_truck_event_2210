@@ -114,4 +114,18 @@ RSpec.describe Event do
       )
     end
   end
+
+  describe '#sell_item' do
+    it 'sells an item with the given quantity' do
+      food_truck1.stock(item1, 55)
+      food_truck1.stock(item2, 33)
+      food_truck2.stock(item1, 10)
+      food_truck2.stock(item2, 22)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+
+      expect(event.sell_item(10)).to eq true
+      expect(event.sell_item(1000)).to eq false
+    end
+  end
 end

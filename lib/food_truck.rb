@@ -1,5 +1,3 @@
-require './lib/item'
-
 class FoodTruck
   attr_reader :name, :inventory
 
@@ -14,5 +12,13 @@ class FoodTruck
 
   def check_stock(item)
     @inventory[item]
+  end
+
+  def potential_revenue
+    revenue = 0
+    @inventory.each do |item, count|
+      revenue += (item.price * count)
+    end
+    revenue.round(2)
   end
 end

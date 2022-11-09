@@ -9,6 +9,8 @@ RSpec.describe Event do
   end
 
   it '#add_food_truck to event' do
+  event = Event.new('South Pearl Street Farmers Market')
+
     food_truck1 = FoodTruck.new('Rocky Mountain Pies')
     item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
     item2 = Item.new({ name: 'Apple Pie (Slice)', price: '$2.50' })

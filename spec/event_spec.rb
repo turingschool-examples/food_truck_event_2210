@@ -116,7 +116,7 @@ RSpec.describe Event do
   end
 
   describe '#sell_item' do
-    it 'sells an item with the given quantity' do
+    it 'returns true and sells an item with the given quantity or returns false if there is not enough in stock' do
       food_truck1.stock(item1, 55)
       food_truck1.stock(item2, 33)
       food_truck2.stock(item1, 10)
@@ -124,8 +124,9 @@ RSpec.describe Event do
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
 
-      expect(event.sell_item(10)).to eq true
-      expect(event.sell_item(1000)).to eq false
+      expect(event.sell_item(item1, 10)).to eq true
+      expect(event.sell_item(item1, 30)).to eq true
+      expect(event.sell_item(item1, 26)).to eq false
     end
   end
 end

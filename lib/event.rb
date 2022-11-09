@@ -47,4 +47,19 @@ class Event
     end
     hash
   end
+
+  def sell_item(item, amount)
+    return false if total_quantity(item) < amount
+    @food_trucks.each do |food_truck|
+      if amount > food_truck.inventory[item]
+        amount -= food_truck.inventory[item]
+        food_truck.stock(item, 0)
+      else
+        food_truck.stock(item, food_truck.inventory[item] - amount)
+        amount = 0
+      end
+      break if amount.zero?
+    end
+    true
+  end
 end

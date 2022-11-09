@@ -8,7 +8,7 @@ class FoodTruck
     @inventory = {}
   end
 
-  def check_stock(item)
+  def check_stock(item, qty = 0)
     if !@inventory.include?(item)
       @inventory[item] = 0
     else

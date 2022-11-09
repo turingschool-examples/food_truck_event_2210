@@ -21,23 +21,14 @@ class Event
   end
 
   def overstocked_items
-    items = []
-    @food_trucks.each do |food_truck|
-      food_truck.inventory.each do |item, quantity|
-        total_quantity = food_trucks_that_sell(item).map { |food_truck| food_truck.check_stock(item) }.sum
-        items.push(item) if (food_trucks_that_sell(item).count > 1 && total_quantity > 50)
-      end
-    end
+    all_items = all_item_objects
+    items = all_items.find_all { |item| total_quantity(item) > 2 && food_trucks_that_sell(item).count > 1}
     items.uniq
   end
 
   def all_items
-    item_names = []
-    @food_trucks.each do |food_truck|
-      truck_items = food_truck.inventory.map { |item, quantity| item.name }
-      item_names.push(truck_items)
-    end
-    item_names.flatten.sort.uniq
+    item_names = all_item_objects.map { |item| item.name}
+    item_names.sort
   end
 
   def all_item_objects
@@ -49,12 +40,15 @@ class Event
     all_items_offered = all_items_offered.flatten.uniq
   end
 
+  def total_quantity(item)
+    total_quantity = food_trucks_that_sell(item).map { |food_truck| food_truck.check_stock(item) }.sum
+  end
+
   def total_inventory
     items = all_item_objects
     inventory = {}
     items.each do |item|
-      total_quantity = food_trucks_that_sell(item).map { |food_truck| food_truck.check_stock(item) }.sum
-      inventory[item] = [total_quantity, food_trucks_that_sell(item)]
+      inventory[item] = [total_quantity(item), food_trucks_that_sell(item)]
     end
     inventory
   end

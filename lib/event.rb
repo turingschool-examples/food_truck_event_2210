@@ -25,9 +25,7 @@ class Event
     @food_trucks.each do |food_truck|
       food_truck.inventory.each do |item, quantity|
         total_quantity = food_trucks_that_sell(item).map { |food_truck| food_truck.check_stock(item) }.sum
-        if food_trucks_that_sell(item).count > 1 && total_quantity > 50
-          items.push(item)
-        end
+        items.push(item) if (food_trucks_that_sell(item).count > 1 && total_quantity > 50)
       end
     end
     items.uniq
@@ -36,7 +34,7 @@ class Event
   def all_items
     item_names = []
     @food_trucks.each do |food_truck|
-      truck_items = food_truck.inventory.map { |item, quantity| item.name}
+      truck_items = food_truck.inventory.map { |item, quantity| item.name }
       item_names.push(truck_items)
     end
     item_names.flatten.sort.uniq

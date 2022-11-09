@@ -18,10 +18,22 @@ class Event
 
   def food_trucks_that_sell(item)
     food_trucks.find_all do |truck|
-        truck.inventory.has_key?(item)
-        # require 'pry'; binding.pry
-        # truck.name
-      end
+      truck.inventory.has_key?(item)
+    end
+  end
 
+  def overstocked_items
+    items = food_trucks.flat_map do |truck|
+      truck.inventory.keys
+    end.uniq
+    items.delete_if do |item|
+      food_trucks_that_sell(item).count == 1
+    end
+    items.delete_if do |item|
+      quantity = food_trucks_that_sell(item).sum do |truck|
+        truck.check_stock(item)
+      end
+      quantity <= 50
+    end
   end
 end

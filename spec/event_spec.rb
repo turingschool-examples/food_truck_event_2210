@@ -93,7 +93,7 @@ RSpec.describe Event do
       food_truck2.stock(item2, 22)
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
-      expect(event.all_items_by_name).to eq [item2, item1]
+      expect(event.all_items_by_name).to eq [item2.name, item1.name]
     end
   end
 

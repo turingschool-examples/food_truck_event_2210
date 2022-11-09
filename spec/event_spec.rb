@@ -50,7 +50,11 @@ RSpec.describe Event do
         expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
       end
       
-      it 'can determine if items are overstocked' do
+      it '#total_stock can return an alphabetical list of all items in stock' do
+        expect(event.total_stock).to eq(['Apple Pie (Slice)', 'Banana Nice Cream',  'Peach Pie (Slice)', 'Peach-Raspberry Nice Cream'])
+      end
+      
+      xit '#overstocked_items can return an array of overstocked items' do
         expect(event.overstocked_items).to eq([item1])
       end
     end

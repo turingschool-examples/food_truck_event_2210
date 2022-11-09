@@ -13,7 +13,7 @@ class FoodTruck
       inventory[item]
     else
       0
-    end 
+    end
   end
 
   def key_match(item)
@@ -23,8 +23,14 @@ class FoodTruck
   end
 
   def stock(item, amount)
-    # require 'pry' ; binding.pry
     inventory[item] += amount
+  end
 
+  def potential_revenue
+    #sum of all their items price * quantity
+    inventory.keys.map do |key|
+      # require 'pry' ; binding.pry
+      key.price
+    end
   end
 end

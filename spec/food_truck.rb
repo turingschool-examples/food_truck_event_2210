@@ -56,7 +56,6 @@ RSpec.describe FoodTruck do
     food_truck.stock(item1, 30)
     expect(food_truck.check_stock(item1)).to eq(30)
 
-     # require 'pry' ; binding.pry
     food_truck.stock(item1, 25)
 
     expect(food_truck.check_stock(item1)).to eq(55)
@@ -78,7 +77,7 @@ RSpec.describe FoodTruck do
     expect(food_truck.inventory.length).to eq(2)
   end
 
-  it 'can display the potential revenue of a truck' do
+  xit 'can display the potential revenue of a truck' do
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
     food_truck3 = FoodTruck.new("Palisade Peach Shack")
@@ -93,7 +92,9 @@ RSpec.describe FoodTruck do
     food_truck2.stock(item3, 25)
     food_truck3.stock(item1, 65)
 
+    # require 'pry' ; binding.pry
     expect(food_truck1.potential_revenue).to eq(148.75)
     expect(food_truck2.potential_revenue).to eq(345.00)
     expect(food_truck3.potential_revenue).to eq(243.75)
+  end
 end

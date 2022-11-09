@@ -23,4 +23,10 @@ class Event
       trucks.inventory[item] > 0
     end
   end
+
+  # def potential_revenue
+  #   #sum of all their items price * quantity
+  #   food_truck.each do |truck|
+  #     truck.
+  # end
 end

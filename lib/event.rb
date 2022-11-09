@@ -18,7 +18,10 @@ class Event
 
   def food_trucks_that_sell(item_object)
     @food_trucks.find_all do |truck|
-      truck.inventory.has_key?(item_object) 
+      truck.inventory.has_key?(item_object)
     end
   end
+
+def overstocked
+end
 end

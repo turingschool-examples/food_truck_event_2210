@@ -43,7 +43,7 @@ RSpec.describe FoodTruck do
   end
 
   describe '#potential_revenue' do
-    xit 'calculates the food trucks potential revenue' do
+    it 'calculates the food trucks potential revenue' do
 
       food_truck1 = FoodTruck.new("Rocky Mountain Pies")
 

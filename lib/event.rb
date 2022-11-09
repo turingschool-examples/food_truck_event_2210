@@ -41,4 +41,10 @@ class Event
       (food_trucks_that_sell(item).length > 1)
     end
   end
+
+  def all_event_item_names 
+    all_event_items.map do |item|
+      item.name
+    end.sort
+  end
 end

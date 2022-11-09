@@ -12,6 +12,10 @@ class FoodTruck
   end
   
   def stock(item, quantity)
-      @inventory[item] += quantity
+    @inventory[item] += quantity
+  end
+  
+  def potential_revenue
+    @inventory.keys.map {|item| item.cost * inventory[item]}.sum
   end
 end

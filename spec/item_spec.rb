@@ -14,5 +14,9 @@ RSpec.describe Item do
       expect(item1.price).to eq('$3.75')
       expect(item2.price).to eq('$2.50')
     end
+    
+    it 'can convert string value to integer' do
+      expect(item1.cost).to eq(3.75)
+    end
   end
 end

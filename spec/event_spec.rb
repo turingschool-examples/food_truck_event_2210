@@ -52,6 +52,3 @@ RSpec.describe Event do
     end
   end
 end
-# it '#' do
-#   expect(event.).to eq()
-# end

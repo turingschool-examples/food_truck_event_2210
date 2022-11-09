@@ -23,10 +23,27 @@ class Event
     end
     sellers
   end
+  
+  def sorted_item_list
+    sorted_list = []
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.map do |item, quantity|
+        sorted_list << item.name
+      end
+    end
+    sorted_list.uniq.sort
+  end
 
-  # def potential_revenue
-  #   food_trucks.find_all do |food_truck|
-  #     food_truck
+  # def overstocked_items
+  #   items = []
+  #   item_quantity = []
+  #   @food_trucks.each do |food_truck|
+  #     food_truck.inventory.map do |item, quantity|
+  #       items << item
+  #       item_quantity << quantity
+  #     end
+  #     items
+  #     item_quantity
   #     require 'pry'; binding.pry
   #   end
   # end

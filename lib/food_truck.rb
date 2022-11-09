@@ -26,7 +26,6 @@ class FoodTruck
    def potential_revenue
     inventory.sum do |item, quantity|
       item.price * quantity
-      # require 'pry'; binding.pry
     end
   end
 end

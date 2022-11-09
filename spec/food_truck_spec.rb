@@ -3,7 +3,7 @@ require './lib/food_truck'
 
 RSpec.describe FoodTruck do
 
-  it 'exist and hass attributes' do
+  it 'exist and has attributes' do
     food_truck = FoodTruck.new("Rocky Mountain Pies")
 
     expect(food_truck).to be_a(FoodTruck)

@@ -55,6 +55,10 @@ class Event
 
 
   def sorted_item_list
+    names = []
+    total_inventory.each do |item, info|
+      names << item.name 
+    end
+    names.sort
   end
-
 end

@@ -123,7 +123,7 @@ RSpec.describe Event do
     expect(event.overstocked_items).to eq([item1])
   end
 
-  xit 'can alphabetically sort the names of the items that vendors have' do
+  it 'can alphabetically sort the names of the items that vendors have' do
     food_truck1.stock(item1, 35)
     food_truck1.stock(item2, 7)
   

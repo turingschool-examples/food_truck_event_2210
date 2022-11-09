@@ -78,4 +78,21 @@ describe Event do
       expect(event.total_item_quantities).to eq({item1 => 100, item2 => 7, item3 => 25, item4 => 50})
     end
   end
+
+  describe '#item_names' do
+    it 'returns a list of all items sold alphabetically' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+
+      expected = ['Apple Pie (Slice)','Banana Nice Cream','Peach Pie (Slice)','Peach-Raspberry Nice Cream']
+
+      expect(event.item_names).to eq(expected)
+    end
+  end
 end

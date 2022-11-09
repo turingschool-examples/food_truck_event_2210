@@ -43,4 +43,15 @@ class Event
     end
     total_item_quantities
   end
+
+  def item_names
+    items = []
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item,quantity|
+        items << item
+      end
+    end
+    items.map! {|item| item.name}
+    items.uniq.sort
+  end
 end

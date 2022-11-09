@@ -16,4 +16,10 @@ class FoodTruck
     return 0 if @inventory[item].nil?
     @inventory[item]
   end
+
+  def potential_revenue
+    @inventory.sum do |item, qty|
+      (item.price[1..].to_f * qty).round(2)
+    end
+  end
 end

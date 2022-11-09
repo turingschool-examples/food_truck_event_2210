@@ -30,4 +30,12 @@ RSpec.describe Event do
 
     expect(@event.food_trucks).to eq([@food_truck1])
   end
+
+  it 'can return the names of all food trucks' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    expect(@event.food_truck_names).to eq([@food_truck1.name, @food_truck2.name, @food_truck3.name])
+  end
 end

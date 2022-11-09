@@ -108,9 +108,9 @@ describe Event do
       food_truck3.stock(item1, 65)
 
       expected = {
-                  item1 => [100,[food_truck1,food_truck3]]
-                  item2 => [7,[food_truck1]]
-                  item3 => [25,[food_truck2]]
+                  item1 => [100,[food_truck1,food_truck3]],
+                  item2 => [7,[food_truck1]],
+                  item3 => [25,[food_truck2]],
                   item4 => [50,[food_truck2]]
       }
 

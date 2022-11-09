@@ -54,4 +54,12 @@ class Event
     items.map! {|item| item.name}
     items.uniq.sort
   end
+
+  def total_inventory
+    total_inventory = total_item_quantities
+    total_inventory.each do |item,quantity|
+      total_inventory[item] = [quantity,food_trucks_that_sell(item)]
+    end
+    total_inventory
+  end
 end

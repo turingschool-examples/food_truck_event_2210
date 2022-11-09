@@ -28,4 +28,17 @@ class Event
       food_truck.check_stock(item)
     end.sum
   end
+
+  def all_event_items
+    @food_trucks.flat_map do |food_truck|
+      food_truck.inventory.keys
+    end.uniq
+  end
+
+  def overstocked_items 
+    all_event_items.find_all do |item|
+      (total_item_quantity(item) > 50) && 
+      (food_trucks_that_sell(item).length > 1)
+    end
+  end
 end

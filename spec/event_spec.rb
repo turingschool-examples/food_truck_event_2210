@@ -135,7 +135,7 @@ describe Event do
       event.add_food_truck(food_truck2)    
       event.add_food_truck(food_truck3)
 
-      expect(event.all_event_items).to eq [item1, item2, item3, item4]
+      expect(event.all_event_items).to eq [item1, item2, item4, item3]
     end
   end
  

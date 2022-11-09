@@ -24,4 +24,8 @@ class FoodTruck
       item.price * quantity
     end.sum
   end
+
+  def items
+    @inventory.keys
+  end
 end

@@ -43,4 +43,14 @@ RSpec.describe FoodTruck do
       expect(ft.check_stock(it3)).to eq(0)
     end
   end
+
+  describe '#potential_revenue' do
+    it 'returns the amount they would recieve if they sell all items' do
+      ft.stock(it1, 100)
+      ft.stock(it2, 45)
+
+      expect(ft.potential_revenue).to be_a Float
+      expect(ft.potential_revenue).to eq(243.55)
+    end
+  end
 end

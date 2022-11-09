@@ -86,4 +86,16 @@ describe FoodTruck do
       expect(food_truck.list_items_sold).to eq([item1, item2])
     end
   end
+
+  describe '#list_items_sold_names' do
+    it 'returns a list of names for the items sold' do
+      food_truck = FoodTruck.new('Rocky Mountain Pies')
+      item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+      item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+      food_truck.stock(item1, 1)
+      food_truck.stock(item2, 1)
+
+      expect(food_truck.list_items_sold_names).to eq(['Peach Pie (Slice)', 'Apple Pie (Slice)'])
+    end
+  end
 end

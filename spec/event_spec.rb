@@ -137,7 +137,7 @@ RSpec.describe Event do
 
   describe '#start_date' do
     it 'returns a start date as a string' do
-      allow(event).to receive(:format_time_to_string).and_return('01/01/1995')
+      allow(event).to receive(:generate_date).and_return('01/01/1995')
       expect(event.start_date).to eq('01/01/1995')
     end
   end

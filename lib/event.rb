@@ -63,10 +63,10 @@ class Event
   end
 
   def start_date
-    @start_date = format_time_to_string(Time.new(2022, 01, 01))
+    @start_date = generate_date
   end
 
-  def format_time_to_string(time)
-    time.strftime('%d/%m/%Y')
+  def generate_date(date)
+    date.strftime('%d/%m/%Y')
   end
 end

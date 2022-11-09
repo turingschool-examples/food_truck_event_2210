@@ -63,4 +63,25 @@ class Event
     items.uniq.sort 
   end
 
+  def total_inventory
+    food_truck_inventory = @food_trucks.map do |truck|
+      truck.inventory
+    end
+    items = []
+    food_truck_inventory.each do |inventory|
+      items << inventory.keys
+    end
+    items.flatten!
+    final_hash = {}
+    items.each do |item|
+      total_quantity = 0
+      final_hash[item] = {}
+      @food_trucks.each do |truck|
+        total_quantity += truck.check_stock(item)
+      end
+      final_hash[item][:trucks] = food_trucks_that_sell(item)
+      final_hash[item][:total_quantity] = total_quantity 
+    end
+    final_hash
+  end
 end

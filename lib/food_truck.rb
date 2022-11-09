@@ -21,4 +21,12 @@ class FoodTruck
     @inventory[item] += qty
   end
 
+  def potential_revenue
+    truck_potential_rev = 0
+    inventory.each do |item, stock|
+        truck_potential_rev += (item.price.sub("$", "").to_f * stock)
+    end
+    truck_potential_rev
+  end
+
 end

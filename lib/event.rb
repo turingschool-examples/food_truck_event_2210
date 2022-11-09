@@ -23,13 +23,24 @@ class Event
     end
   end
 
+  def list_all_items
+    all_items = @food_trucks.flat_map do |food_truck|
+      food_truck.inventory.keys
+    end
+    all_items.uniq
+  end
   def overstocked_items
     # sold by more than 1 food truck && total quantity is > 50
+    @food_trucks.find_all do |food_truck|
+    # if food
+    end
   end
 
   def names_of_all_items
-    # list sorted alphabetically, no duplicates
-    # array.sort_by.uniq
+    all_item_names = list_all_items.map do |item|
+      item.name
+    end
+    all_item_names.sort
   end
 
   def total_inventory

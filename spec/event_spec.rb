@@ -64,7 +64,7 @@ RSpec.describe Event do
   end
   
   describe 'Iteration3' do
-    before(:all) do
+    before(:each) do
       food_truck1.stock(item1, 35)
       food_truck1.stock(item2, 7)
       food_truck2.stock(item3, 25)
@@ -76,17 +76,16 @@ RSpec.describe Event do
     end
 
     it 'knows overstocked_items at the event' do
-
+require 'pry'; binding.pry
       
     end
     
     it 'knows the names of all items at the event, sorted alphabetically' do
-      
-      
+      expect(event.names_of_all_items).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
     end
 
     it 'knows the total inventory of items, and which trucks sell the item' do
-      
+
       
     end
   end

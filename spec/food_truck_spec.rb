@@ -42,4 +42,13 @@ describe FoodTruck do
       expect(food_truck.inventory.keys).to eq([item1, item2])
     end
   end
+
+  describe '#has_item' do
+    food_truck1 = FoodTruck.new('Tacos')
+    item1 = Item.new(name: 'Steak Taco', price: '$1.25')
+
+    food_truck1.stock(item1, 100)
+
+    expect(food_truck1.has_item(item1)).to eq(true)
+  end
 end

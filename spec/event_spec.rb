@@ -129,6 +129,59 @@ describe Event do
   end
 
   describe '#sell_quantity' do
+    it 'returns false if the event stock is too low' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item1, 50)
+      food_truck2.stock(item2, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item2, 22)
 
+      expect(event.sell_quantity(item1, 151)).to be false
+      expect(event.sell_quantity(item2, 55)).to be false
+    end
+
+    it 'returns true if the event stock is sufficient' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item1, 50)
+      food_truck2.stock(item2, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item2, 22)
+
+      expect(event.sell_quantity(item1, 150)).to be true
+      expect(event.sell_quantity(item2, 54)).to be true
+    end
+
+    it 'reduces the item stock in the food trucks' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item1, 50)
+      food_truck2.stock(item2, 25)
+      food_truck3.stock(item1, 65)
+      food_truck3.stock(item2, 22)
+
+      event.sell_quantity(item1,86)
+
+
+      expect(food_truck1.check_stock(item1)).to eq(0)
+      expect(food_truck2.check_stock(item1)).to eq(0)
+      expect(food_truck3.check_stock(item1)).to eq(64)
+
+      event.sell_quantity(item2,8)
+
+      expect(food_truck1.check_stock(item2)).to eq(0)
+      expect(food_truck2.check_stock(item2)).to eq(24)
+      expect(food_truck3.check_stock(item2)).to eq(22)
+    end
   end
 end

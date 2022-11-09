@@ -15,10 +15,10 @@ RSpec.describe FoodTruck do
 
   describe '#check_stock' do
     it 'returns the total number of a given item that the food truck has' do
-      food_truck.stock(item1, 1)
-      food_truck.stock(item2, 2)
-      expect(food_truck.check_stock(item1)).to eq 1
-      expect(food_truck.check_stock(item2)).to eq 2
+      food_truck.stock(item1, 2)
+      
+      expect(food_truck.check_stock(item1)).to eq 2
+      expect(food_truck.check_stock(item2)).to eq 0
     end
   end
 

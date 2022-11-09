@@ -7,6 +7,7 @@ class FoodTruck
   end
 
   def check_stock(item)
+    return 0 unless @inventory[item]
     @inventory[item]
   end
 

@@ -34,7 +34,7 @@ RSpec.describe FoodTruck do
     it 'returns the potential total revenue of a food_truck' do
       food_truck.stock(item1, 2)
       food_truck.stock(item2, 3)
-      expect(food_truck.potential_revenue).to eq 2
+      expect(food_truck.potential_revenue).to eq 15.0
     end
   end
 end

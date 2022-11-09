@@ -1,12 +1,17 @@
 class FoodTruck
   attr_reader :name, :inventory
 
-  def initialize(name, inventory = 0)
+  def initialize(name)
     @name = name
-    @inventory = {}
+    @inventory = Hash.new(0)
   end
 
+
   def check_stock(item_object)
-    stock = @inventory.count
+    @inventory[:item_object]
+  end
+
+  def stock (item_object, amount)
+    @inventory.merge!({item_object: amount})
   end
 end

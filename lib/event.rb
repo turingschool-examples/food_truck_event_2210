@@ -1,9 +1,8 @@
 class Event
   attr_reader :name, :food_trucks, :start_date
 
-  def initialize(event_data)
-    @name = event_data[:name]
-    @start_date = event_data[:start_date]
+  def initialize(name)
+    @name = name
     @food_trucks = []
   end
 
@@ -61,5 +60,13 @@ class Event
       break if amount.zero?
     end
     true
+  end
+
+  def start_date
+    @start_date = format_time_to_string(Time.new(2022, 01, 01))
+  end
+
+  def format_time_to_string(time)
+    time.strftime('%d/%m/%Y')
   end
 end

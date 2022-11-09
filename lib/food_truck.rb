@@ -15,10 +15,19 @@ class FoodTruck
   #@inventory = {item_object: amount}.transform_values {|v| v + amount}
 #end
 
-  def stock (item_object, amount)
-    new_stock_value = @inventory.merge!({item_object: amount})
-    #if item_object == item_object
-    #@inventory = {item_object: amount}.transform_values {|v| v + amount}
-  #end
+  def stock(item_object, amount)
+    if @inventory[item_object] == nil
+      @inventory.merge!({item_object: amount})
+    else
+      new_amount = @inventory[item_object] += amount
+      @inventory.merge!({item_object: new_amount})
+    end
   end
+
+  # def potential_revenue
+  #   inventory.sum do |item, amount|
+  #     item.price * amount
+  #   end
+  # end
+
 end

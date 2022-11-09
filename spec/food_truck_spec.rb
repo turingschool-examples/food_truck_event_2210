@@ -29,4 +29,12 @@ RSpec.describe FoodTruck do
       expect(food_truck.inventory).to eq({ item1 => 2, item2 => 3 })
     end
   end
+
+  describe '#potential_revenue' do
+    it 'returns the potential total revenue of a food_truck' do
+      food_truck.stock(item1, 2)
+      food_truck.stock(item2, 3)
+      expect(food_truck.potential_revenue).to eq 2
+    end
+  end
 end

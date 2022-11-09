@@ -120,7 +120,9 @@ RSpec.describe Event do
       expect(event2.start_date).to eq(Time.parse("28/09/2022"))
     end
     
-    it 'can sell items' do
+    it 'can sell items' do 
+      # the way this is set up, it works unless there are more than 2 trucks selling the same item.
+      # implimenting flexible code would likely use a loop until quantity / remainder == 0 
       expect(event.sell_item(item2, 10)).to be false
       
       expect(event.sell_item(item1, 20)).to be true

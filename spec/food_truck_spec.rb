@@ -31,7 +31,7 @@ RSpec.describe FoodTruck do
     expect(food_truck.inventory).to eq({item_1 => 55})
     
     food_truck.stock(item_2, 12)
-
+    
     expect(food_truck.inventory).to eq({item_1 => 55, item_2 => 12})
   end
   
@@ -39,7 +39,17 @@ RSpec.describe FoodTruck do
     food_truck.stock(item_1, 30)
     food_truck.stock(item_1, 25)
     food_truck.stock(item_2, 12)
-
+    
     expect(food_truck.potential_revenue).to eq(236.25)
   end
+  
+  it 'removes item from stock if sold' do
+    food_truck.stock(item_1, 30)
+    expect(food_truck.check_stock(item_1)).to eq(30)
+    
+    food_truck.sell(item_1, 20)
+    expect(food_truck.check_stock(item_1)).to eq(10)
+    
+  end
+
 end

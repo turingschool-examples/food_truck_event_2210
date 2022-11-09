@@ -7,8 +7,14 @@ class Event
     @food_trucks = []    
   end
 
+  def add_food_truck(food_truck)
+    @food_trucks << food_truck 
+  end
+
   def food_truck_names
-    # iterate over the food trucks and return an array of their names
+    @food_trucks.map do |truck|
+      truck.name
+    end
   end
 
 end

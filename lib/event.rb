@@ -30,5 +30,7 @@ class Event
     end
   end
 
+  def food_truck_items_alphabetically 
+  end 
   
 end

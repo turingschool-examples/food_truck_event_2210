@@ -55,26 +55,21 @@ class Event
   end
 
   def total_inventory
-    
+    merge_inventories
+
     names = merge_inventories.map do |item|
       item[0]
     end
-
+require 'pry'; binding.pry
     names.map do |name|
-      
       find_truck_names_that_sell(name)
-      
     end
-    
-      
   end
 
   def find_truck_names_that_sell(item_input)
-    merge_inventories.map do |item|
-      require 'pry'; binding.pry
-      item[0] if item_input == item
+    food_trucks_that_sell(item[0]).map do |truck|
+      truck.name if item_input == item[0]
     end
-
   end
 
 end

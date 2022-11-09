@@ -11,6 +11,6 @@ RSpec.describe Event do
   end
 
   it 'starts without any food trucks' do
-    expect(event.food_truck).to eq([])
+    expect(event.food_trucks).to eq([])
   end
 end

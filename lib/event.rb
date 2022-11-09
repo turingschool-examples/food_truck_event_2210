@@ -15,5 +15,6 @@ class Event
   end
   
   def food_trucks_that_sell(item)
+    @food_trucks.find_all {|truck|      truck.inventory.keys.include?(item)}
   end
 end

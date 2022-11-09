@@ -24,7 +24,7 @@ class Event
   end
 
   def list_all_items_sold
-    @food_trucks.map { |truck| truck.list_items_sold }.uniq
+    @food_trucks.flat_map { |truck| truck.list_items_sold }.uniq
   end
 
   def total_quantity_item(item)

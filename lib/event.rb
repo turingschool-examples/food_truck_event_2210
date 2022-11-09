@@ -60,4 +60,31 @@ class Event
     end
     total_inventory_hash
   end
+
+  def first_truck_sale(item, quantity)
+    food_truck = food_trucks_that_sell(item)[0]
+    if quantity >= food_truck.check_stock(item)
+    remainder = quantity - food_truck.check_stock(item)
+    food_truck.sell(item, food_truck.check_stock(item))
+    next_truck_sale(item, remainder)
+    else quantity <= food_truck.check_stock(item)
+      food_truck.sell(item, quantity)
+    end 
+  end
+
+  def next_truck_sale(item, remainder)
+    food_truck = food_trucks_that_sell(item)[1]
+    if remainder >= food_truck.check_stock(item)
+    remainder = remainder - food_truck.check_stock(item)
+    food_truck.sell(item, food_truck.check_stock(item))
+    else remainder <= food_truck.check_stock(item)
+      food_truck.sell(item, remainder)
+    end 
+  end
+
+  def sell_item(item, quantity)
+    return false if quantity > total_quantity_of_item(item)
+    first_truck_sale(item, quantity)
+    true
+  end  
 end

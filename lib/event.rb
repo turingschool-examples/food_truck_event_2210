@@ -48,8 +48,8 @@ class Event
 
   def total_inventory
     list_inventory = Hash.new([])
-    list_all_items_sold.each do
-      |item| list_inventory[item.name] = total_quantity_item(item), food_trucks_that_sell(item)
+    list_all_items_sold.each do |item|
+      list_inventory[item.name] = { quantity: total_quantity_item(item), trucks: food_trucks_that_sell_names(item) }
     end
     list_inventory
   end

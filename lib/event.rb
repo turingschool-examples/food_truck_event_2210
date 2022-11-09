@@ -24,6 +24,17 @@ class Event
     end
   end
 
-  
+#   def overstocked
+#     if food_trucks_that_sell
+#   end
+
+  def all_items
+    all = food_trucks.flat_map do |food_truck|
+        food_truck.inventory.map do |item, stock|
+            item.name
+        end
+    end
+    all.sort.uniq
+  end
 
 end

@@ -113,7 +113,7 @@ RSpec.describe Event do
 
         end
 
-        it "Even can return a list of overstocked items" do
+        it "Even can return a list of all items food trucks have in stock" do
             event = Event.new('South Pearl Street Farmers Market')
 
             food_truck1 = FoodTruck.new("Rocky Mountain Pies")
@@ -134,6 +134,8 @@ RSpec.describe Event do
             event.add_food_truck(food_truck2)    
             event.add_food_truck(food_truck3)
 
-            expect(event.overstocked).to eq([item1, item3])
+            # expect(event.overstocked).to eq([item1, item3])
+
+            expect(event.all_items).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
         end
 end

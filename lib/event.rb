@@ -55,4 +55,16 @@ class Event
     end
     inventory_hash
   end
+
+  def sell_item(item, quantity)
+    quantity_var = quantity
+    return false if !event_items.keys.include?(item) || event_items[item] < quantity
+    food_trucks.each do |food_truck|
+      until food_truck.check_stock(item) == 0 || quantity_var == 0
+        food_truck.inventory[item] -= 1
+        quantity_var -= 1
+      end
+    end
+    return true
+  end
 end

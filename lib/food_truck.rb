@@ -12,11 +12,6 @@ class FoodTruck
   end
   
   def stock(item, quantity)
-    if @inventory[item] = 0
-      @inventory[item] = quantity
-    # elsif 
-    #   require 'pry';binding.pry
-    end
-    
+      @inventory[item] += quantity
   end
 end

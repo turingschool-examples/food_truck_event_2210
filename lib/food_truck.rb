@@ -1,4 +1,7 @@
 class FoodTruck
+
+  require 'time'
+
   attr_reader :name,
               :inventory
 

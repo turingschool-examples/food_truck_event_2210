@@ -1,6 +1,7 @@
 require 'rspec'
 require './lib/food_truck'
 require './lib/event'
+require 'time'
 
 describe Event do
   describe '#initialize' do
@@ -177,6 +178,14 @@ describe Event do
                                               sold_at: [food_truck2]
                                             }
                                           })
+    end
+  end
+
+  describe '#start_date' do 
+    it 'stores a start date' do
+      event = Event.new('South Pearl Street Farmers Market')
+      allow(Time).to receive(:now).and_return('10/10/2020')
+      expect(event.start_date).to eq('10/10/2020')
     end
   end
 end

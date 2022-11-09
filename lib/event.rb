@@ -20,4 +20,21 @@ class Event
       food_truck.check_stock(item) > 0
     end
   end
+
+  def overstocked_items
+    # items = {}
+    # @food_trucks.each do |food_truck|
+    # end
+    #check if two food trucks have the same item
+    # if they do check the quantity of those items
+    # if total quantity is over 50 add to array
+  end
+
+  def full_menu
+    @food_trucks.flat_map do |food_truck|
+      food_truck.inventory.keys.map do |item|
+        item.name
+      end
+    end.uniq.sort
+  end
 end

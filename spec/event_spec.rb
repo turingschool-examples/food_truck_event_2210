@@ -50,4 +50,32 @@ describe Event do
       expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
     end
   end
+
+  describe '#overstocked_items' do
+    xit 'returns items sold by >=2 food trucks and have quantity >50' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1,35)
+      food_truck2.stock(item1,35)
+      food_truck3.stock(item2,55)
+
+      expect(event.overstocked_items).to eq([item1])
+    end
+  end
+
+  describe '#total_item_quantities' do
+    it 'returns a hash of each item quantity across all food trucks' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+
+      expect(event.total_item_quantities).to eq({item1 => 100, item2 => 7, item3 => 25, item4 => 50})
+    end
+  end
 end

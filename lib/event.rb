@@ -23,4 +23,18 @@ class Event
       food_truck.inventory[item] > 0
     end
   end
+
+  def overstocked_items
+
+  end
+
+  def total_item_quantities
+    hash = Hash.new(0)
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item,quantity|
+        hash[item] += quantity
+      end
+    end
+    hash
+  end
 end

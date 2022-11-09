@@ -46,10 +46,15 @@ class Event
     inventory_hash
   end
 
+  def overstocked_items 
+    items = total_inventory.map do |item, info|
+      item if (info[:quantity] > 50) && (info[:food_trucks].count > 1)
+    end
+    items.compact
+  end
+
+
   def sorted_item_list
   end
 
-  def overstocked_items 
-    
-  end
 end

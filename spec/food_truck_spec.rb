@@ -28,6 +28,7 @@ RSpec.describe FoodTruck do
       item1 = Item.new({name: 'Peach pie (slice)', price: "$3.75"})
       food_truck.stock(item1, 30)
 
+
       expect(food_truck.check_stock(item1)).to eq(30)
     end 
   end 

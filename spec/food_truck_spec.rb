@@ -44,4 +44,16 @@ describe FoodTruck do
       expect(ft.check_stock(item2)).to eq(12)
     end
   end
+
+  describe '#potential_revenue' do
+    it 'calculates the potential revenue if a food truck sells all its stock' do
+      item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
+      item2 = Item.new({ name: 'Apple Pie (Slice)', price: '$2.50' })
+      ft = FoodTruck.new('Rocky Mountain Pies')
+      ft.stock(item1, 30)
+      ft.stock(item2, 12)
+
+      expect(ft.potential_revenue).to eq(142.50)
+    end
+  end
 end

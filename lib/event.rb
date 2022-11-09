@@ -28,4 +28,30 @@ class Event
     end
     trucks_with_item
   end
+
+  # def overstocked_items
+  #   overstocked = []
+  #   @food_trucks.find_all do |truck|
+  #     truck.inventory.each do |item, amount|
+  #       if truck.inventory.include?(item)
+  #         overstocked << truck
+  #       end
+  #       if overstocked.count > 1
+  #
+  #       end
+  #     end
+  #   end
+  # end
+
+  def inventory_sorted_alphabetically
+    alphabetical_items = []
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, amount|
+        if truck.inventory.include?(item)
+          alphabetical_items << item.name
+        end
+      end
+    end
+    alphabetical_items.sort.uniq
+  end
 end

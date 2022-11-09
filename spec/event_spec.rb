@@ -75,6 +75,14 @@ RSpec.describe Event do
       event.add_food_truck(food_truck3)
     end
 
+    it 'returns a list of all items (helper)' do
+      expect(event.list_all_items).to eq([item1, item2, item3, item4])
+    end
+
+    it 'returns the total quantity of an item (helper)' do
+      expect(event.total_quantity_of_item(item1)).to eq(100)
+    end
+
     it 'knows overstocked_items at the event' do
       expect(event.overstocked_items).to eq([item1])
     end

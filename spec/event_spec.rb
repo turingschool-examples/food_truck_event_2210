@@ -55,4 +55,12 @@ RSpec.describe Event do
 
     expect(@event.overstocked_items).to eq([@item1])
   end
+
+  it 'can return the names of all items at an event' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    expect(@event.item_names).to eq([@item1.name, @item2.name, @item3.name, @item4.name])
+  end
 end

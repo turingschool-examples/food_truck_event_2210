@@ -22,5 +22,4 @@ class Event
       truck.inventory.include?(item)
     end
   end
-
 end

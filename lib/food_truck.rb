@@ -16,6 +16,10 @@ class FoodTruck
   end 
   
   def stock(item, count)
-    @inventory[item] = count
+    if inventory.include?(item)
+      inventory[item] += count
+    else
+      @inventory[item] = count
+    end 
   end 
 end

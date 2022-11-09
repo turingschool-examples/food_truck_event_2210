@@ -9,4 +9,8 @@ RSpec.describe Event do
     expect(event).to be_a Event
     expect(event.name).to eq('Catalina Wine Mixer')
   end
+
+  it 'starts without any food trucks' do
+    expect(event.food_truck).to eq([])
+  end
 end

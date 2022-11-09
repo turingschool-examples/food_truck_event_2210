@@ -2,9 +2,9 @@ require './lib/item'
 require './lib/food_truck'
 
 RSpec.describe FoodTruck do
-  let(:ft) {FoodTruck.new('Rock Springs Cafe')}
-  let(:it1) {Item.new({name: 'Pumpkin Pie (Slice)', price: '$1.99'})}
-  let(:it2) {Item.new({name: 'Rhubarb Pie (Slice)', price: '$0.99'})}
+  let(:ft) { FoodTruck.new('Rock Springs Cafe') }
+  let(:it1) { Item.new({name: 'Pumpkin Pie (Slice)', price: '$1.99' }) }
+  let(:it2) { Item.new({name: 'Rhubarb Pie (Slice)', price: '$0.99' }) }
 
   it 'exists' do
     expect(ft).to be_a FoodTruck
@@ -24,11 +24,11 @@ RSpec.describe FoodTruck do
     it 'adds an item and quantity of item to hash' do
       ft.stock(it1, 20)
 
-      expect(ft.inventory).to eq({it1 => 20})
+      expect(ft.inventory).to eq({ it1 => 20 })
 
       ft.stock(it1, 100)
       ft.stock(it2, 46)
-      expect(ft.inventory).to eq({it1 => 120, it2 => 46})
+      expect(ft.inventory).to eq({ it1 => 120, it2 => 46 })
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe FoodTruck do
     it 'returns the quantity in stock for given item' do
       ft.stock(it1, 100)
       ft.stock(it2, 46)
-      it3 = Item.new({name: 'Chocolate Chip Ice Cream(3 scoops)', price: '$2.99'})
+      it3 = Item.new({ name: 'Chocolate Chip Ice Cream(3 scoops)', price: '$2.99' })
 
       expect(ft.check_stock(it1)).to eq(100)
       expect(ft.check_stock(it2)).to eq(46)

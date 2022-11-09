@@ -31,4 +31,13 @@ RSpec.describe Event do
       expect(event.food_trucks).to eq([ft1, ft2])
     end
   end
+
+  describe '#food_truck_names' do
+    it 'returns an array of the food truck names at the event' do
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+
+      expect(event.food_truck_names).to eq(['Rock Springs Cafe', 'Press Coffee'])
+    end
+  end
 end

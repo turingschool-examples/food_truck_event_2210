@@ -214,7 +214,8 @@ describe Event do
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
 
-      expect(event.total_inventory).to eq('')
+      expect(event.total_inventory).to be_instance_of(Hash)
+      expect(event.total_inventory['Apple Pie (Slice)'][:quantity]).to eq(7)
     end
   end
 end

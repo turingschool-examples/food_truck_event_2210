@@ -83,7 +83,7 @@ describe FoodTruck do
       food_truck.stock(item1, 1)
       food_truck.stock(item2, 1)
 
-      expect(food_truck1.list_items_sold).to eq([item1, item2])
+      expect(food_truck.list_items_sold).to eq([item1, item2])
     end
   end
 end

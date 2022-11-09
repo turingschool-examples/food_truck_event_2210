@@ -28,6 +28,6 @@ class FoodTruck
   end
 
   def list_items_sold
-    @inventory.map { |item| item.name }
+    @inventory.map { |item, quantity| item }
   end
 end

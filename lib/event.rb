@@ -25,16 +25,22 @@ class Event
   end
 
   def overstocked_items
-
+    overstocked_items = []
+    total_item_quantities.each do |item|
+      if item[1] > 50 && food_trucks_that_sell(item[0]).count > 1
+        overstocked_items << item[0]
+      end
+    end
+    overstocked_items
   end
 
   def total_item_quantities
-    hash = Hash.new(0)
+    total_item_quantities = Hash.new(0)
     @food_trucks.each do |food_truck|
       food_truck.inventory.each do |item,quantity|
-        hash[item] += quantity
+        total_item_quantities[item] += quantity
       end
     end
-    hash
+    total_item_quantities
   end
 end

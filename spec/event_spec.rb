@@ -52,7 +52,7 @@ describe Event do
   end
 
   describe '#overstocked_items' do
-    xit 'returns items sold by >=2 food trucks and have quantity >50' do
+    it 'returns items sold by >1 food trucks and have quantity >50' do
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)

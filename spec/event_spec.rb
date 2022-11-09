@@ -58,8 +58,50 @@ RSpec.describe Event do
     end
   end
 
+  describe '#duplicated_item?()' do
+    it 'returns true if multiple food trucks have the given item' do
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.duplicated_item?(it2)).to be false
+      expect(event.duplicated_item?(it4)).to be false
+      expect(event.duplicated_item?(it3)).to be true
+
+      ft2.stock(it2, 30)
+
+      expect(event.duplicated_item?(it2)).to be true
+    end
+  end
+
+  describe '#total_quantity_over_fifty?()' do
+    it 'returns true if quantity of an item at event is over 50' do
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.total_quantity_over_fifty?(it2)).to be false
+      expect(event.total_quantity_over_fifty?(it4)).to be true
+      expect(event.total_quantity_over_fifty?(it3)).to be true
+
+      ft2.stock(it2, 30)
+
+      expect(event.total_quantity_over_fifty?(it2)).to be true
+    end
+  end
+
   describe '#overstocked_items' do
-    xit 'returns a list of items sold by more than one truck and qty is >50' do
+    it 'returns a list of items sold by more than one truck and qty is >50' do
       expect(event.overstocked_items).to eq([])
 
       event.add_food_truck(ft1)
@@ -72,8 +114,9 @@ RSpec.describe Event do
       ft2.stock(it4, 70)
 
       expect(event.overstocked_items).to include(it1)
+      expect(event.overstocked_items).not_to include(it4)
 
-      ft2.stock(it3, 12)
+      ft2.stock(it3, 22)
 
       expect(event.overstocked_items).to include(it1, it3)
     end

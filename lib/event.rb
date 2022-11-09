@@ -21,13 +21,21 @@ class Event
     end
   end
 
+  def duplicated_item?(item)
+    trucks_with_item = @food_trucks.find_all do |food_truck|
+      food_truck.check_stock(item) > 0
+    end
+    trucks_with_item.size > 1
+  end
+
+  def total_quantity_over_fifty?(item)
+    total_inventory[item][0] > 50
+  end
+
   def overstocked_items
-    # items = {}
-    # @food_trucks.each do |food_truck|
-    # end
-    #check if two food trucks have the same item
-    # if they do check the quantity of those items
-    # if total quantity is over 50 add to array
+    all_items.find_all do |item|
+      duplicated_item?(item) && total_quantity_over_fifty?(item)
+    end
   end
 
   def full_menu
@@ -53,8 +61,6 @@ class Event
   end
 
   def total_inventory
-    # creates a hash with items as keys and values
-    # is array with qty in first element and nested array as second element
     event_inventory = all_items_hash
     @food_trucks.each do |food_truck|
       food_truck.inventory.each do |item, quantity|

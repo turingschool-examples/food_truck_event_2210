@@ -1,8 +1,9 @@
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :start_date
 
-  def initialize(name)
-    @name = name
+  def initialize(event_data)
+    @name = event_data[:name]
+    @start_date = event_data[:start_date]
     @food_trucks = []
   end
 

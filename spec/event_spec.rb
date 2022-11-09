@@ -3,7 +3,7 @@ require './lib/food_truck'
 require './lib/item'
 
 RSpec.describe Event do
-  let(:event) { Event.new('South Pearl Street Farmers Market') }
+  let(:event) { Event.new({name: 'South Pearl Street Farmers Market', start_date: '01/01/2022' }) }
   let(:food_truck1) { FoodTruck.new("Rocky Mountain Pies") }
   let(:food_truck2) { FoodTruck.new('Ba-Nom-a-Nom') }
   let(:food_truck3) { FoodTruck.new("Palisade Peach Shack") }
@@ -16,6 +16,7 @@ RSpec.describe Event do
       expect(event).to be_a Event
       expect(event.name).to eq 'South Pearl Street Farmers Market'
       expect(event.food_trucks).to eq []
+      expect(event.start_date).to eq '01/01/2022'
     end
   end
 

@@ -13,6 +13,20 @@ describe FoodTruck do
     end
   end
 
+  describe '#stock' do
+    it 'adds an item to the inventory hash with a stock count and updates the stock count if the item already exists' do
+      item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
+      ft = FoodTruck.new('Rocky Mountain Pies')
+
+      ft.stock(item1, 30)
+      expect(ft.inventory).to eq({item1 => 30})
+      ft.stock(item1, 25)
+      expect(ft.inventory).to eq({item1 => 55})  
+      ft.stock(item2, 12)
+      expect(ft.inventory).to eq({item1 => 55, item2 => 12})
+    end
+  end
+
   describe '#check_stock' do
     it 'returns the stock count of a given item' do
       item1 = Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' })
@@ -21,12 +35,12 @@ describe FoodTruck do
 
       expect(ft.check_stock(item1)).to eq(0)
       ft.stock(item1, 30)
-      expect(ft.inventory).to eq({item1 => 30})
       expect(ft.check_stock(item1)).to eq(30)
       ft.stock(item1, 25)
       expect(ft.check_stock(item1)).to eq(55)
+      expect(ft.check_stock(item2)).to eq(0)
       ft.stock(item2, 12)
-      expect(ft.inventory).to eq({item1 => 55, item2 => 12})
+      expect(ft.check_stock(item2)).to eq(12)
     end
   end
 end

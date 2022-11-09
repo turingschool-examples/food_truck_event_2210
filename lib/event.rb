@@ -17,13 +17,13 @@ class Event
 
   def food_trucks_that_sell(item)
     @food_trucks.select do |food_truck|
-      food_truck.check_stock(item) > 0
+      food_truck.check_stock(item).positive?
     end
   end
 
   def duplicated_item?(item)
     trucks_with_item = @food_trucks.find_all do |food_truck|
-      food_truck.check_stock(item) > 0
+      food_truck.check_stock(item).positive?
     end
     trucks_with_item.size > 1
   end

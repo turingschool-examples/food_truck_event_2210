@@ -59,7 +59,7 @@ RSpec.describe Event do
   end
 
   describe '#overstocked_items' do
-    it 'returns a list of items sold by more than one truck and qty is >50' do
+    xit 'returns a list of items sold by more than one truck and qty is >50' do
       expect(event.overstocked_items).to eq([])
 
       event.add_food_truck(ft1)
@@ -76,6 +76,23 @@ RSpec.describe Event do
       ft2.stock(it3, 12)
 
       expect(event.overstocked_items).to include(it1, it3)
+    end
+  end
+
+  describe '#full_menu' do
+    it 'returns a list of all items names available at event with no duplicates' do
+      expect(event.full_menu).to eq([])
+
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.full_menu).to eq(['Cortado', 'Latte', 'Pumpkin Pie (Slice)', 'Rhubarb Pie (Slice)'])
     end
   end
 end

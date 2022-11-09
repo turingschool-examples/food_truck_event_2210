@@ -6,14 +6,9 @@ class FoodTruck
     @inventory = Hash.new(0)
   end
 
-
   def check_stock(item_object)
     @inventory[:item_object]
   end
-
-  #def transform_amount(item_object, amount)
-  #@inventory = {item_object: amount}.transform_values {|v| v + amount}
-#end
 
   def stock(item_object, amount)
     if @inventory[item_object] == nil

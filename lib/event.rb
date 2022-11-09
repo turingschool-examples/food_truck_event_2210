@@ -42,4 +42,12 @@ class Event
   def item_names
     event_items.keys.map { |item| item.name}
   end
+
+  def total_inventory
+    inventory_hash = event_items
+    inventory_hash.map do |item, quantity|
+      inventory_hash[item] = [quantity, food_trucks_that_sell(item)]
+    end
+    inventory_hash
+  end
 end

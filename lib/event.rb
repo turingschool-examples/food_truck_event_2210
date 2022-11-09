@@ -29,10 +29,16 @@ class Event
     end
     all_items.uniq
   end
+
+  def total_quantity_of_item(item)
+    food_trucks.sum do |food_truck|
+      food_truck.check_stock(item)
+    end
+  end
+
   def overstocked_items
-    # sold by more than 1 food truck && total quantity is > 50
-    @food_trucks.find_all do |food_truck|
-    # if food
+    list_all_items.find_all do |item|
+      food_trucks_that_sell(item).length > 1 && total_quantity_of_item(item) > 50
     end
   end
 
@@ -44,7 +50,10 @@ class Event
   end
 
   def total_inventory
-    # hash of all items, total quantity, and which food_trucks have item
-    # 
+    total_inventory_hash = {}
+    list_all_items.each do |item|
+      total_inventory_hash[item] = [total_quantity_of_item(item), food_trucks_that_sell(item)]
+    end
+    total_inventory_hash
   end
 end

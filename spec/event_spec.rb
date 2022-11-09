@@ -76,8 +76,7 @@ RSpec.describe Event do
     end
 
     it 'knows overstocked_items at the event' do
-require 'pry'; binding.pry
-      
+      expect(event.overstocked_items).to eq([item1])
     end
     
     it 'knows the names of all items at the event, sorted alphabetically' do
@@ -85,8 +84,12 @@ require 'pry'; binding.pry
     end
 
     it 'knows the total inventory of items, and which trucks sell the item' do
-
-      
+      expect(event.total_inventory).to eq({
+        item1 => [100, [food_truck1, food_truck3]],
+        item2 => [7, [food_truck1]],
+        item3 => [25, [food_truck2]],
+        item4 => [50, [food_truck2]]
+      })
     end
   end
 end

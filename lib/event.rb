@@ -15,4 +15,11 @@ class Event
       truck.name
     end
   end
+
+  # def food_trucks_that_sell(item_object)
+  #   @food_trucks.find_all do |truck|
+  #     require 'pry' ;binding.pry
+  #     truck.inventory.key?(item_object)
+  #   end
+  # end
 end

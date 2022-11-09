@@ -6,6 +6,7 @@ RSpec.describe Event do
   let(:event) { Event.new('South Pearl Street Farmers Market') }
   let(:food_truck1) { FoodTruck.new("Rocky Mountain Pies") }
   let(:food_truck2) { FoodTruck.new('Ba-Nom-a-Nom') }
+  let(:food_truck3) { FoodTruck.new("Palisade Peach Shack") }
   let(:item1) { Item.new({ name: 'Peach Pie (Slice)', price: '$3.75' }) }
   let(:item2) { Item.new({ name: 'Apple Pie (Slice)', price: '$2.50' }) }
   let(:item3) { Item.new({ name: 'Peach-Raspberry Nice Cream', price: '$5.30'}) }
@@ -44,14 +45,29 @@ RSpec.describe Event do
     end
   end
 
-  describe '#overstocked_items' do
-    it 'returns an array of items who are overstocked' do
+  describe '#all_items' do
+    it 'returns an array of all uniq items at the event' do
       food_truck1.stock(item1, 55)
       food_truck1.stock(item2, 33)
       food_truck2.stock(item1, 10)
       food_truck2.stock(item2, 22)
       event.add_food_truck(food_truck1)
       event.add_food_truck(food_truck2)
+      expect(event.all_items).to eq([item1, item2])
+    end
+  end
+
+  describe '#overstocked_items' do
+    it 'returns an array of items who are overstocked' do
+      food_truck1.stock(item1, 55)
+      food_truck1.stock(item2, 33)
+      food_truck2.stock(item1, 10)
+      food_truck2.stock(item2, 22)
+      food_truck2.stock(item3, 1)
+      food_truck3.stock(item4, 100)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
       expect(event.overstocked_items).to eq([item1, item2])
     end
   end

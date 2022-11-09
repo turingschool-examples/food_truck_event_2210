@@ -17,4 +17,8 @@ class Event
   def food_trucks_that_sell(item)
     @food_trucks.select { |food_truck| food_truck.sells?(item) }
   end
+
+  def all_items
+    @food_trucks.flat_map { |food_truck| food_truck.all_items }.uniq
+  end
 end

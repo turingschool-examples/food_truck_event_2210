@@ -61,6 +61,6 @@ RSpec.describe Event do
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
 
-    expect(@event.item_names).to eq([@item1.name, @item2.name, @item3.name, @item4.name])
+    expect(@event.item_names).to eq([@item1.name, @item2.name, @item4.name, @item3.name])
   end
 end

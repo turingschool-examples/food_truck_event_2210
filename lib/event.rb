@@ -38,4 +38,8 @@ class Event
       item if food_trucks_that_sell(item).length > 1 && quantity > 50
     end
   end
+
+  def item_names
+    event_items.keys.map { |item| item.name}
+  end
 end

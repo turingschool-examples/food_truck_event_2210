@@ -40,4 +40,21 @@ RSpec.describe Event do
       expect(event.food_truck_names).to eq(['Rock Springs Cafe', 'Press Coffee'])
     end
   end
+
+  describe '#food_trucks_that_sell()' do
+    it 'returns array of food trucks that sell the given item' do
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 4)
+      ft2.stock(it3, 100)
+      ft2.stock(it4, 70)
+
+      expect(event.food_trucks_that_sell(it2)).to eq([ft1])
+      expect(event.food_trucks_that_sell(it4)).to eq([ft2])
+      expect(event.food_trucks_that_sell(it3)).to eq([ft1, ft2])
+    end
+  end
 end

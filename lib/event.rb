@@ -3,6 +3,11 @@ class Event
   def initialize(name)
     @name = name
     @food_trucks = []
+    @start_date = Time.now
+  end
+
+  def start_date
+    @start_date.strftime('%D')
   end
 
   def add_food_truck(food_truck)

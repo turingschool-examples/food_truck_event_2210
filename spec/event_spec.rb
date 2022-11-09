@@ -17,12 +17,14 @@ RSpec.describe Event do
     @food_truck2.stock(@item4, 50)
     @food_truck2.stock(@item3, 25)
     @food_truck3.stock(@item1, 65)
+    allow(@event).to receive(:start_date).and_return(05/27/2022)
   end
 
   it 'exists and has attributes' do
     expect(@event).to be_a Event
     expect(@event.name).to eq('South Pearl Street Farmers Market')
     expect(@event.food_trucks).to eq([])
+    expect(@event.start_date).to eq(05/27/2022)
   end
 
   it 'can add a food truck to the event' do

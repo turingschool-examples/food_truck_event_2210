@@ -37,4 +37,14 @@ class Event
     all.sort.uniq
   end
 
+  def total_inventory
+    total = {}
+    food_trucks.each do |food_truck|
+        food_truck.inventory.map do |item, stock|
+            total[item] = {:current_stock => stock, :available_at => food_trucks_that_sell(item)}
+        end
+    end
+    total
+  end
+
 end

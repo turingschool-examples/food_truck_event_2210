@@ -57,4 +57,25 @@ RSpec.describe Event do
       expect(event.food_trucks_that_sell(it3)).to eq([ft1, ft2])
     end
   end
+
+  describe '#overstocked_items' do
+    it 'returns a list of items sold by more than one truck and qty is >50' do
+      expect(event.overstocked_items).to eq([])
+
+      event.add_food_truck(ft1)
+      event.add_food_truck(ft2)
+      ft1.stock(it1, 20)
+      ft1.stock(it2, 30)
+      ft1.stock(it3, 20)
+      ft2.stock(it1, 31)
+      ft2.stock(it3, 10)
+      ft2.stock(it4, 70)
+
+      expect(event.overstocked_items).to include(it1)
+
+      ft2.stock(it3, 12)
+
+      expect(event.overstocked_items).to include(it1, it3)
+    end
+  end
 end

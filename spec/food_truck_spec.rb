@@ -29,4 +29,7 @@ RSpec.describe FoodTruck do
     food_truck.stock(item2, 12)
     expect(food_truck.inventory.values).to eq([55, 12])
   end
+
+  it '#potential_revenue the sum of all their items price * quantity.' do
+end
 end

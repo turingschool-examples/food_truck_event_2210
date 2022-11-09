@@ -8,15 +8,16 @@ class FoodTruck
     @inventory = {}
   end
 
-#   def stock(item, qty = 0)
-#     @inventory[item]
-#     binding.pry
-#   end
-
   def check_stock(item)
     if !@inventory.include?(item)
-    return 0
+      @inventory[item] = 0
+    else
+      @inventory[item]
     end
+  end
+
+  def stock(item, qty)
+    @inventory[item] += qty
   end
 
 end

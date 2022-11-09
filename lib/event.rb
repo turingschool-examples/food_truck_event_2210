@@ -17,4 +17,16 @@ class Event
   def food_trucks_that_sell(item)
     food_trucks.find_all {|truck| truck.inventory.include?(item)}
   end 
+
+  def overstocked
+    food_trucks_inventory = @food_trucks.map {|food_truck| food_truck.inventory}
+    items_in_more_than_1_truck = []
+    food_trucks_inventory.each do |inventory|
+      inventory.each do |item, count|
+        if food_trucks_that_sell(item).count > 1 
+          items_in_more_than_1_truck << item
+        end 
+      end 
+    end
+  end
 end

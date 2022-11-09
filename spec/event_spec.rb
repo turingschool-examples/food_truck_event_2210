@@ -141,5 +141,15 @@ RSpec.describe Event do
 
   it 'has a start_date' do
     expect(event.start_date).to eq('11/06/2022')
+    # not super clear on setting up a stub
+  end
+
+  it 'can sell items and return false if there is not enough quantity' do
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+    item5 = Item.new({name: "Watermelons", price: "$4.25"})
+    
+    expect(event.sell(item5, 1)).to eq(false)
   end
 end

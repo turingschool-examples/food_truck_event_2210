@@ -69,4 +69,13 @@ class Event
   def start_date
     @start_date.strftime('%m/%d/%Y')
   end
+
+  def sell(item, quantity)
+
+    require 'pry'; binding.pry
+    total_inventory.each do |item, quantity|
+
+    require 'pry'; binding.pry
+    end
+  end
 end

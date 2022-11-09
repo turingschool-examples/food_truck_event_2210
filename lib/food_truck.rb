@@ -19,7 +19,7 @@ class FoodTruck
     @inventory[item] += quantity
   end
 
-  def has_item(item)
+  def item?(item)
     @inventory.include?(item)
   end
 end

@@ -69,4 +69,10 @@ describe Event do
       expect(event.food_trucks_that_sell('')).to eq([])
     end
   end
+
+  describe '#potential_revenue' do
+    it 'the sum of all a trucks items price * quantity.'do
+      
+    end
+  end
 end

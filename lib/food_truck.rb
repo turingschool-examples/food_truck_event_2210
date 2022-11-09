@@ -20,4 +20,8 @@ class FoodTruck
       item.price_to_f * amount
     end
   end
+
+  def sells?(item)
+    !!@inventory[item]
+  end
 end

@@ -22,4 +22,12 @@ class FoodTruck
       item.price * quantity
     end
   end
+
+  def overstocked
+    @inventory.map do |item|
+  end
+
+  def all_event_items
+    
+  end
 end

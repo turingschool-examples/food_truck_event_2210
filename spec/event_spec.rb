@@ -62,4 +62,32 @@ RSpec.describe Event do
     expect(food_truck2.potential_revenue).to eq(345.00) 
     expect(food_truck3.potential_revenue).to eq(243.75) 
   end
+  
+  describe 'Iteration3' do
+    before(:all) do
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item3, 25)
+      food_truck2.stock(item4, 50)
+      food_truck3.stock(item1, 65)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+    end
+
+    it 'knows overstocked_items at the event' do
+
+      
+    end
+    
+    it 'knows the names of all items at the event, sorted alphabetically' do
+      
+      
+    end
+
+    it 'knows the total inventory of items, and which trucks sell the item' do
+      
+      
+    end
+  end
 end

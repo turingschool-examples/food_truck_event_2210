@@ -18,8 +18,7 @@ class Event
 
   # def food_trucks_that_sell(item_object)
   #   @food_trucks.find_all do |truck|
-  #     require 'pry' ;binding.pry
-  #     truck.inventory.key?(item_object)
+  #     truck.check_stock(item_object) > 0
   #   end
   # end
 end

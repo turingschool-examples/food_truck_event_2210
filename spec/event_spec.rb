@@ -38,6 +38,8 @@ RSpec.describe Event do
     it 'returns an array of food_trucks that sell a given item' do
       food_truck1.stock(item1, 1)
       food_truck2.stock(item1, 2)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
       expect(event.food_trucks_that_sell(item1)).to eq [food_truck1, food_truck2]
     end
   end

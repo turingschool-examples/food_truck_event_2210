@@ -95,4 +95,26 @@ describe Event do
       expect(event.item_names).to eq(expected)
     end
   end
+
+  describe '#total_inventory' do
+    it 'returns a hash of each item total quantity and which food trucks sell it' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      food_truck1.stock(item1, 35)
+      food_truck1.stock(item2, 7)
+      food_truck2.stock(item4, 50)
+      food_truck2.stock(item3, 25)
+      food_truck3.stock(item1, 65)
+
+      expected = {
+                  item1 => [100,[food_truck1,food_truck3]]
+                  item2 => [7,[food_truck1]]
+                  item3 => [25,[food_truck2]]
+                  item4 => [50,[food_truck2]]
+      }
+
+      expect(event.total_inventory).to eq(expected)
+    end
+  end
 end

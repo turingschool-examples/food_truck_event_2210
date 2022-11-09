@@ -39,4 +39,23 @@ class Event
     end
     item_names.flatten.sort.uniq
   end
+
+  def all_item_objects
+    all_items_offered = []
+    @food_trucks.each do |food_truck|
+      truck_items = food_truck.inventory.map { |item, quantity| item }
+      all_items_offered.push(truck_items)
+    end
+    all_items_offered = all_items_offered.flatten.uniq
+  end
+
+  def total_inventory
+    items = all_item_objects
+    inventory = {}
+    items.each do |item|
+      total_quantity = food_trucks_that_sell(item).map { |food_truck| food_truck.check_stock(item) }.sum
+      inventory[item] = [total_quantity, food_trucks_that_sell(item)]
+    end
+    inventory
+  end
 end

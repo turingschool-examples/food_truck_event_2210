@@ -44,11 +44,13 @@ describe FoodTruck do
   end
 
   describe '#has_item' do
-    food_truck1 = FoodTruck.new('Tacos')
-    item1 = Item.new(name: 'Steak Taco', price: '$1.25')
+    it 'returns whether the truck stocks in inventory specified item' do
+      food_truck1 = FoodTruck.new('Tacos')
+      item1 = Item.new(name: 'Steak Taco', price: '$1.25')
 
-    food_truck1.stock(item1, 100)
+      food_truck1.stock(item1, 100)
 
-    expect(food_truck1.has_item(item1)).to eq(true)
+      expect(food_truck1.has_item(item1)).to eq(true)
+    end
   end
 end

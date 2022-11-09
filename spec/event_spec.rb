@@ -63,6 +63,7 @@ describe Event do
       expect(event.food_trucks_that_sell(item1)).to eq(food_truck1)
       expect(event.food_trucks_that_sell(item3)).to eq(food_truck2)
       expect(event.food_trucks_that_sell('')).to eq([])
+    end
   end
 end
 

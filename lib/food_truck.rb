@@ -18,4 +18,8 @@ class FoodTruck
   def stock(item, quantity)
     @inventory[item] += quantity
   end
+
+  def has_item(item)
+    @inventory.include?(item)
+  end
 end

@@ -54,6 +54,49 @@ RSpec.describe Event do
     expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
   end
 
-  
+  it 'has a method to find overstocked items' do
+    food_truck2.stock(item4, 50)
+    food_truck1.stock(item1, 35)
+    food_truck3.stock(item1, 65)
+    food_truck1.stock(item2, 7)
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+
+    expect(event.overstocked_items).to eq([item1])
+
+    food_truck1.stock(item4, 1)
+    expect(event.overstocked_items).to eq([item1, item4])
+
+    food_truck3.stock(item3, 90)
+    expect(event.overstocked_items).to eq([item1, item4])
+  end
+
+  it 'has a method to find the names of all items sold, sorted alphabetically and not duplicated' do
+    food_truck2.stock(item4, 50)
+    food_truck1.stock(item1, 35)
+    food_truck3.stock(item1, 65)
+    food_truck1.stock(item2, 7)
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+
+    expect(event.item_names).to eq(['Apple Pie (Slice)', "Banana Nice Cream", 'Peach Pie (Slice)'])
+  end
+
+  it 'has a method to find total inventory and quantity, as well as who sells an item' do
+    food_truck2.stock(item4, 50)
+    food_truck1.stock(item1, 35)
+    food_truck3.stock(item1, 65)
+    food_truck1.stock(item2, 7)
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+
+    expect(event.total_inventory).to eq()
+
+  end
+
+
 
 end

@@ -31,4 +31,7 @@ class FoodTruck
   def remove_dollar_sign(price)
     price.delete "$"
   end
+
+  
+
 end

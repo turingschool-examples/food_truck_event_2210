@@ -37,4 +37,12 @@ RSpec.describe FoodTruck do
       expect(food_truck.potential_revenue).to eq 15.0
     end
   end
+
+  describe '#sells?' do
+    it 'returns a boolean indicating whether or not the given item is sold' do
+      food_truck.stock(item1, 2)
+      expect(food_truck.sells?(item1)).to be true
+      expect(food_truck.sells?(item2)).to be false
+    end
+  end
 end

@@ -117,4 +117,13 @@ describe Event do
       expect(event.total_inventory).to eq(expected)
     end
   end
+
+  describe 'start_date' do
+    it 'returns the start date' do
+      event = double("event stub")
+
+      allow(event).to receive(:start_date).and_return("01/07/1985")
+      expect(event.start_date).to eq("01/07/1985")
+    end
+  end
 end

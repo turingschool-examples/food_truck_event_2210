@@ -3,11 +3,13 @@ require './lib/food_truck'
 
 class Event
   attr_reader :name,
-              :food_trucks
+              :food_trucks,
+              :start_date
 
-  def initialize(name)
+  def initialize(name, start_date = '')
     @name = name
     @food_trucks = []
+    @start_date = start_date
   end
 
   def add_food_truck(food_truck)

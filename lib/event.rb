@@ -9,4 +9,11 @@ class Event
   def add_food_truck(truck)
     @food_trucks << truck
   end
+  
+  def food_truck_names
+    @food_trucks.map {|truck| truck.name}
+  end
+  
+  def food_trucks_that_sell(item)
+  end
 end

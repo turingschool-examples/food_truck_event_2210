@@ -30,21 +30,25 @@ RSpec.describe Event do
       expect(event.food_trucks).to eq([])
     end
     
-    it 'can #add_food_truck to the event' do
-      event.add_food_truck(food_truck1)
-      event.add_food_truck(food_truck2)
-      event.add_food_truck(food_truck3)
+    describe 'event with trucks' do
+      before(:each) do
+        event.add_food_truck(food_truck1)
+        event.add_food_truck(food_truck2)
+        event.add_food_truck(food_truck3)
+      end
       
-      expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
-    end
-    
-    xit 'can return an array of #food_truck_names' do
-      expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
-    end
-    
-    xit 'can find #food_trucks_that_sell a specified item' do
-      expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
-      expect(event.food_trucks_that_sell(item4)).to eq([food_truck4])
+      it 'can #add_food_truck to the event' do
+        expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
+      end
+      
+      it 'can return an array of #food_truck_names' do
+        expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+      end
+      
+      it 'can find #food_trucks_that_sell a specified item' do
+        expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
+        expect(event.food_trucks_that_sell(item4)).to eq([food_truck4])
+      end
     end
   end
 end

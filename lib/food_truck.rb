@@ -7,10 +7,20 @@ class FoodTruck
   end
 
   def check_stock(item)
-    @inventory.values.sum
+    if @inventory.keys.include?(item)
+      @inventory[item]
+    else
+      0
+    end
   end
 
   def stock(item, quantity)
     @inventory[item] += quantity
+  end
+
+  def potential_revenue
+    @inventory.sum do |item|
+      item[0].price * item[1]
+    end
   end
 end

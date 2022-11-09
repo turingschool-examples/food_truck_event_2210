@@ -4,6 +4,10 @@ class FoodTruck
               :inventory
   def initialize(name)
     @name      = name
-    @inventory = {}
+    @inventory = Hash.new({})
+  end
+
+  def check_stock(item)
+    @inventory[item].count
   end
 end

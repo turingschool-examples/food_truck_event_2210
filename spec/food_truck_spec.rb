@@ -35,6 +35,10 @@ describe FoodTruck do
       food_truck.stock(item2, 12)
 
       expect(food_truck.check_stock(item2)).to eq(12)
+
+      food_truck.stock(item1, 30)
+
+      expect(food_truck.check_stock(item1)).to eq(55)
     end
   end
 end

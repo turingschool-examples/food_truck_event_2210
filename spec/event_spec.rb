@@ -1,3 +1,4 @@
+require 'time'
 require './lib/event'
 require './lib/food_truck'
 require './lib/item'
@@ -99,5 +100,31 @@ RSpec.describe Event do
         item4 => [50, [food_truck2]]
       })
     end
+  end
+
+  describe 'Iteration 4' do
+    it 'can give an event a start date, formatted as ("dd/mm/yyyy")' do
+      event2 = Event.new("The Great American Beer Festival", "28/09/2022")
+      
+      expect(event2.start_date).to eq(Time.parse("28/09/2022"))
+    end
+    
+    it 'can sell items' do
+      expect(event.sell_item(item2, 10)).to be false
+      
+      expect(event.sell_item(item1, 20)).to be true
+      expect(food_truck1.check_stock(item1)).to eq(15)
+      
+      expect(event.sell_item(item1, 20)).to be true
+      expect(food_truck1.check_stock(item1)).to eq(0)
+      expect(food_truck3.check_stock(item1)).to eq(60)
+
+      expect(event.sell_item(item1, 60)).to be true
+      expect(food_truck1.check_stock(item1)).to eq(0)
+      expect(food_truck3.check_stock(item1)).to eq(0)
+      
+      expect(event.sell_item(item1, 1)).to be false
+    end
+
   end
 end

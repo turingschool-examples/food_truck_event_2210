@@ -1,10 +1,14 @@
+require 'time'
+
 class Event
   attr_reader :name,
-              :food_trucks
+              :food_trucks,
+              :start_date
   
-  def initialize(name)
+  def initialize(name, start_date = nil)
     @name = name
     @food_trucks = []
+    @start_date = (Time.parse(start_date) if !start_date.nil?)
   end
 
   def add_food_truck(food_truck)

@@ -1,1 +1,17 @@
 require './lib/item'
+
+RSpec.describe Item do
+  describe '#iteration 1' do
+    let(:item1){Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})}
+    let(:item2){Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
+    
+    it 'exists and has readable attributes' do
+      expect(item1).to be_a(Item)
+      expect(item2).to be_a(Item)
+      exect(item1.name).to eq('Peach Pie (Slice)')
+      exect(item2.name).to eq('Apple Pie (Slice)')
+      exect(item1.price).to eq('$3.75')
+      exect(item2.price).to eq('$2.50')
+    end
+  end
+end

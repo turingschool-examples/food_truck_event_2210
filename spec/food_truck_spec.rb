@@ -62,7 +62,7 @@ describe FoodTruck do
     end
   end
 
-  describe 'potential_revenue' do
+  describe '#potential_revenue' do
     it 'calculates the sum of their item price times quantity' do
       food_truck1 = FoodTruck.new("Rocky Mountain Pies")
       item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
@@ -80,6 +80,18 @@ describe FoodTruck do
       expect(food_truck1.potential_revenue).to eq 148.75
       expect(food_truck2.potential_revenue).to eq 345.00
       expect(food_truck3.potential_revenue).to eq 243.75
+    end
+  end
+
+  describe '#items' do
+    it 'returns a list of all items in the food trucks inventory' do
+      food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+      item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+      item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+      food_truck1.stock(item1, 35)    
+      food_truck1.stock(item2, 7)  
+      
+      expect(food_truck1.items).to eq [2]
     end
   end
 end

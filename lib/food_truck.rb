@@ -26,4 +26,8 @@ class FoodTruck
   def potential_revenue
     @inventory.sum { |item, quantity| item.price * quantity.to_f}
   end
+
+  def list_items_sold
+    @inventory.map { |item| item.name }
+  end
 end

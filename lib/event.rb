@@ -7,8 +7,8 @@ class Event
               :food_trucks
 
   def initialize(name)
-    @name        = name
-    @food_trucks = []
+    @name           = name
+    @food_trucks    = []
   end
 
   def add_food_truck(truck)
@@ -21,5 +21,14 @@ class Event
 
   def food_trucks_that_sell(item)
     @food_trucks.select { |truck| truck.item?(item) == true }
+  end
+
+  def oversold_items
+    all_items = @food_trucks.map do |truck|
+      truck.inventory.map do |item|
+        
+      end
+    end
+    all_items.select{ |item| food_trucks_that_sell(item) }
   end
 end

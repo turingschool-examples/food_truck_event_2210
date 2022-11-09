@@ -73,7 +73,7 @@ describe Event do
   end
 
   describe '#oversold_items' do
-    it 'return a list of overstocked Items for an Event' do
+    xit 'return a list of overstocked Items for an Event' do
       event = Event.new('South Pearl Street Farmers Market')
       food_truck1 = FoodTruck.new('Rocky Mountain Pies')
       item1 = Item.new({name: 'Peach Pie (Slice)', price: '$3.75'})
@@ -92,7 +92,7 @@ describe Event do
       event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
 
-      expect(event.oversold_items).to eq(')'
+      expect(event.oversold_items).to eq([item1])
     end
   end
 end

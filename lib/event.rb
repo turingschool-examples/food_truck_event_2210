@@ -32,4 +32,13 @@ class Event
     end
     items.uniq
   end
+
+  def all_items
+    item_names = []
+    @food_trucks.each do |food_truck|
+      truck_items = food_truck.inventory.map { |item, quantity| item.name}
+      item_names.push(truck_items)
+    end
+    item_names.flatten.sort.uniq
+  end
 end

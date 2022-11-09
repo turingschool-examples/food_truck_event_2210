@@ -23,12 +23,18 @@ class Event
     @food_trucks.select { |truck| truck.item?(item) == true }
   end
 
-  def oversold_items
-    all_items = @food_trucks.map do |truck|
-      truck.inventory.map do |item|
-        
-      end
+  def list_all_items_sold
+    @food_trucks.map { |truck| truck.list_items_sold }.uniq
+  end
+
+  def total_quantity_item(item)
+    @food_trucks.map do |truck|
+      truck.check_stock
+      require 'pry'; binding.pry
     end
-    all_items.select{ |item| food_trucks_that_sell(item) }
+  end
+
+  def oversold_items
+    list_all_items_sold.select{ |item| (food_trucks_that_sell(item).length > 1) && (total_quantity_item(item) > 50) }
   end
 end

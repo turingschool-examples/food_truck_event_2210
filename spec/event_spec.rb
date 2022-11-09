@@ -12,3 +12,4 @@ describe Event do
       expect(event.title).to eq("South Pearl Street Farmers Market")
     end
   end
+end

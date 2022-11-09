@@ -11,18 +11,27 @@ RSpec.describe Event do
     let(:item4){Item.new({name: 'Banana Nice Cream', price: '$4.25'})}
     
     let(:food_truck1){FoodTruck.new('Rocky Mountain Pies')}
-    let(:food_truck2){FoodTruck.new("Ba-Nom-a-Nom")}
-    let(:food_truck3){FoodTruck.new("Palisade Peach Shack")}
+    let(:food_truck2){FoodTruck.new('Ba-Nom-a-Nom')}
+    let(:food_truck3){FoodTruck.new('Palisade Peach Shack')}
     
     let(:event){Event.new('South Pearl Street Farmers Market')}
     
     it 'exists and has readable attributes' do
       expect(event).to be_an(Event)
+      expect(event.name).to eq('South Pearl Street Farmers Market')
       expect(event.food_trucks).to eq([])
+    end
+    
+    it 'can #add_food_truck' do
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      event.add_food_truck(food_truck3)
+      
+      expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
     end
     
   end
 end
 # it '#' do
-#   expect().to eq()
+#   expect(event.).to eq()
 # end

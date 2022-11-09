@@ -32,5 +32,12 @@ RSpec.describe Event do
     expect(food_truck2.check_stock(item3)).to eq(25)
     expect(food_truck3.inventory).to include(item1)
 
+    event.add_food_truck(food_truck1)    
+    event.add_food_truck(food_truck2)    
+    event.add_food_truck(food_truck3)
+
+    expect(event.inventory).to be_instance_of(Hash)
+    expect(event.inventory).to include(food_truck3)
+
     end
 end

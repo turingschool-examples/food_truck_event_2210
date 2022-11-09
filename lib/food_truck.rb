@@ -14,4 +14,10 @@ class FoodTruck
   def check_stock(item)
     @inventory[item]
   end
+
+  def potential_revenue
+    @inventory.sum do |item, quantity|
+      item.price_to_float * quantity
+    end
+  end
 end

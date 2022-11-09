@@ -25,4 +25,18 @@ class Event
       end
     end
   end
+
+  def overstocked_items
+    @food_trucks.map do |truck|
+      truck.inventory.find_all do |item, quantity|
+        if quantity > 50 && food_trucks_that_sell(item).count > 1
+          return item 
+        end
+      end
+    end
+  end
+
+  def item_names(truck)
+  
+  end
 end

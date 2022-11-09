@@ -73,7 +73,7 @@ RSpec.describe Event do
     expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
   end
 
-  xit '#potential_revenue from a FoodTruck' do
-    expect(event.food_truck_names).to be_a(Array)
-  end
+#   xit '#potential_revenue from a FoodTruck' do
+#     expect(event.food_truck_names).to be_a(Array)
+#   end
 end

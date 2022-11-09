@@ -13,4 +13,11 @@ class FoodTruck
   def stock(item, quantity)
     inventory[item] += quantity
   end
+
+  def potential_revenue
+    hash = inventory.transform_keys do |item|
+      item.price
+    end.to_a
+    hash.sum { |price| price[0] * price[1] }
+  end
 end

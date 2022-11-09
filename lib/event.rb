@@ -16,4 +16,12 @@ class Event
     end
   end
 
+  def food_trucks_that_sell(item)
+    @food_trucks.filter_map do |food_truck|
+        if food_truck.inventory.include?(item)
+        food_truck
+        end
+    end
+  end
+
 end

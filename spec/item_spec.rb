@@ -1,9 +1,9 @@
 require './lib/item'
-require pry
+require 'pry'
 
 RSpec.describe Item do
   it 'item exists and has attributes' do
-    item = item.new({name: 'Peach Pie (Slice)', price: "$3:75"})
+    item = Item.new({name: 'Peach Pie (Slice)', price: "$3:75"})
 
     expect(item).to be_instance_of(Item)
     expect(item.name).to eq("Peach Pie (Slice)")

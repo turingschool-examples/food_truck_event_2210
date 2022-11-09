@@ -43,4 +43,21 @@ class Event
     end.uniq
     items.map { |item| item.name }.sort
   end
+
+  def inventory
+    items = food_trucks.flat_map do |truck|
+        truck.inventory.keys
+      end.uniq
+    inventory = Hash[(items.map do|item|
+         [item,[(food_trucks_that_sell(item).sum do|truck|
+        truck.check_stock(item)
+    end),
+    
+    food_trucks_that_sell(item).flat_map do|truck|
+        truck.name
+    end]]end)]
+    inventory.transform_values!{|v|v.flatten}
+    inventory.delete_if {|k,v| v[0] == 0}
+
+  end
 end

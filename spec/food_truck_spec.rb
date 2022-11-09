@@ -7,32 +7,32 @@ RSpec.describe FoodTruck do
   let!(:item_2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
 
   it 'starts with a name and empty inventory hash' do
-    expect(foot_truck.name).to eq("Rocky Mountain Pies")
-    expect(foot_truck.inventory).to eq({})
-    expect(foot_truck).to be_a(FoodTruck)
+    expect(food_truck.name).to eq("Rocky Mountain Pies")
+    expect(food_truck.inventory).to eq({})
+    expect(food_truck).to be_a(FoodTruck)
   end
   
   it 'can have items added with a stock method' do
     expect(food_truck.check_stock(item_1)).to eq(0)
     
-    food_truck.stock(item1, 30)
+    food_truck.stock(item_1, 30)
     
-    expect(food_truck.inventory).to eq({ item_1: 30 })
+    expect(food_truck.inventory).to eq({item_1 => 30})
     expect(food_truck.check_stock(item_1)).to eq(30)
   end
   
   it 'adds more stock if same item is added' do
-    food_truck.stock(item1, 30)
+    food_truck.stock(item_1, 30)
     
-    expect(food_truck.inventory).to eq({ item_1: 30 })
+    expect(food_truck.inventory).to eq({item_1 => 30})
     
-    food_truck.stock(item1, 25)
+    food_truck.stock(item_1, 25)
     
-    expect(food_truck.inventory).to eq({ item_1: 55 })
+    expect(food_truck.inventory).to eq({item_1 => 55})
     
-    food_truck.stock(item2, 12)
+    food_truck.stock(item_2, 12)
 
-    expect(food_truck.inventory).to eq({ item_1: 55, item_2: 12 })
+    expect(food_truck.inventory).to eq({item_1 => 55, item_2 => 12})
   end
   
 end

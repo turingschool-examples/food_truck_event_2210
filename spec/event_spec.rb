@@ -63,4 +63,17 @@ RSpec.describe Event do
 
     expect(@event.item_names).to eq([@item1.name, @item2.name, @item4.name, @item3.name])
   end
+
+  it 'can return all items at an event with total quantity and food trucks that sell that item' do
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    expect(@event.total_inventory).to eq({
+      @item1 => [100, [@food_truck1, @food_truck3]],
+      @item2 => [7, [@food_truck1]],
+      @item4 => [50, [@food_truck2]],
+      @item3 => [25, [@food_truck2]]
+      })
+  end
 end

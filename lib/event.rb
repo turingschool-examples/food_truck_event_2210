@@ -21,8 +21,7 @@ class Event
   end
 
   def overstocked_items
-    all_items = all_item_objects
-    items = all_items.find_all { |item| total_quantity(item) > 2 && food_trucks_that_sell(item).count > 1}
+    items = all_item_objects.find_all { |item| total_quantity(item) > 2 && food_trucks_that_sell(item).count > 1}
     items.uniq
   end
 
@@ -45,9 +44,8 @@ class Event
   end
 
   def total_inventory
-    items = all_item_objects
     inventory = {}
-    items.each do |item|
+    all_item_objects.each do |item|
       inventory[item] = [total_quantity(item), food_trucks_that_sell(item)]
     end
     inventory

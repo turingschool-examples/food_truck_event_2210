@@ -10,7 +10,7 @@ RSpec.describe Event do
   let!(:item1) {Item.new({name: 'Peach Pie (Slice)', price: '$3.75'})}
   let!(:item2) {Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})}
   let!(:item3) {Item.new({name: 'Peach-Raspberry Nice Cream', price: '$5.30'})}
-  let!(:item2) {Item.new({name: 'Banana Nice Cream', price: '$4.25'})}
+  let!(:item4) {Item.new({name: 'Banana Nice Cream', price: '$4.25'})}
 
   it 'starts with a name and an empty food trucks array' do
     expect(event.name).to eq("South Pearl Street Farmers Market")
@@ -34,7 +34,7 @@ RSpec.describe Event do
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
     
-    expect(event.food_truck_names).to eq(["Rockey Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+    expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   end
   
   it 'knows the food trucks that sell a specific item' do
@@ -48,7 +48,7 @@ RSpec.describe Event do
     event.add_food_truck(food_truck3)
     
     expect(event.food_trucks_that_sell(item1)).to eq [food_truck1, food_truck3]
-    expect(event.food_trucks_that_sell(item1)).to eq [food_truck2]
+    expect(event.food_trucks_that_sell(item4)).to eq [food_truck2]
   end  
   
   it 'can find potential revenue for more trucks' do # tested singularly in food_truck_spec, but this adheres to the interaction pattern

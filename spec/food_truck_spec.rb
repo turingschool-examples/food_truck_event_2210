@@ -2,6 +2,7 @@
 
 require 'rspec'
 require './lib/food_truck'
+require './lib/item'
 
 describe FoodTruck do
   describe '#initialize' do

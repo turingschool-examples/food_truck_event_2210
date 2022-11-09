@@ -7,4 +7,12 @@ class FoodTruck
     @name = name
     @inventory = {}
   end
+
+  def check_stock
+
+  end
+
+  def stock
+
+  end
 end

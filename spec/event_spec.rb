@@ -50,12 +50,14 @@ RSpec.describe Event do
       food_truck1.stock(item1, 20)
       food_truck1.stock(item2, 25)
       food_truck2.stock(item3, 20)
-      food_truck2.stock(item4, 20)
+      food_truck2.stock(item3, 20)
 
       expect(event.food_trucks_that_sell(item1)).to eq([food_truck1])
     
       food_truck2.stock(item1, 20)
       expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck2])
+
+      expect(event.food_trucks_that_sell(item4)).to eq([])
     end
   end
 

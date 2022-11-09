@@ -1,6 +1,7 @@
 class Event
   attr_reader :name,
-              :food_trucks
+              :food_trucks,
+              :start_date
 
   def initialize(name)
     @name = name
@@ -68,4 +69,10 @@ class Event
     end
     return inv
   end
+
+  def start_date
+    @start_date = Time.now
+  end
+
+  # got stuck on over_stocked_items in an unproductive struggle. Out of time to tackle sell...
 end

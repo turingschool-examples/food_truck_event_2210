@@ -30,7 +30,7 @@ class Event
   def total_quantity_item(item)
     @food_trucks.map do |truck|
       truck.check_stock(item)
-    end
+    end.sum
   end
 
   def oversold_items

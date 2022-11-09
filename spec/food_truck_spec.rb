@@ -13,6 +13,7 @@ RSpec.describe FoodTruck do
     it 'returns a hash for its inventory' do
       food_truck = FoodTruck.new("Rocky Mountain Pies")
 
+      expect(food_truck.inventory).to eq({})
     end
   end
 end

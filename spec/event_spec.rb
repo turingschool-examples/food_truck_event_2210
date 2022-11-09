@@ -72,4 +72,18 @@ RSpec.describe Event do
       expect(event.overstocked_items).to eq [item1]
     end
   end
+
+  describe '#total_inventory' do
+    it 'tallies up the total inventory' do
+      event = Event.new("South Pearl Street Farmers Market")
+      food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+      food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+      item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+      food_truck1.stock(item1, 30)
+      food_truck2.stock(item1, 30)
+      output = {@item1 => {quantity: 60 food_trucks: [food_truck1, food_truck2]}}
+
+      expect(event.total_inventory).to eq output
+    end
+  end
 end

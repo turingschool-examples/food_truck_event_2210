@@ -2,7 +2,7 @@ require './lib/item'
 require './lib/food_truck'
 require './lib/event'
 
-Rspec.describe Event do
+RSpec.describe Event do
   describe '#initialize' do
     it 'exists and has attributes' do
       event = Event.new("South Pearl Street Farmers Market")

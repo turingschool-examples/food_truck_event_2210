@@ -21,5 +21,14 @@ class FoodTruck
     else
       @inventory[item] = count
     end 
+  end
+  
+  def potential_revenue
+    total_revenue = []
+    @inventory.each do |item, count|
+      revenue = item.price * count
+      total_revenue << revenue
+    end 
+    total_revenue.sum
   end 
 end

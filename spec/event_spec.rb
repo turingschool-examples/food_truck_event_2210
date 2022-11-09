@@ -222,12 +222,12 @@ describe Event do
       items = event.total_inventory.keys
       item_info = event.total_inventory.values
       hash_item1 = event.total_inventory.keys.first
-      hash_item1_quantity = event.total_inventory[item1][quantity]
-      hash_item1_foodtrucks = event.total_inventory[item1][sold_at]
+      hash_item1_quantity = event.total_inventory[item1][:quantity]
+      hash_item1_foodtrucks = event.total_inventory[item1][:sold_at]
 
       expect(hash.class).to eq Hash
       expect(items.all?(Item)).to be true
-      expect(item_info.class).to eq Hash
+      expect(item_info.first.class).to eq Hash
       expect(hash_item1).to eq item1
       expect(hash_item1_quantity).to eq 100
       expect(hash_item1_foodtrucks).to eq event.food_trucks_that_sell(item1)

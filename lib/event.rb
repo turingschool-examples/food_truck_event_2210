@@ -47,4 +47,11 @@ class Event
       item.name
     end.sort
   end
+
+  def total_inventory
+    all_event_items.each_with_object({}) do |item, hash|
+      hash[item] = {quantity: total_item_quantity(item), 
+                     sold_at: food_trucks_that_sell(item)}
+    end
+  end
 end

@@ -1,8 +1,13 @@
 class Item
-  attr_reader :name, :price
+  attr_reader :name, :price, :quantity
 
   def initialize(item_data)
     @name = item_data[:name]
-    @price = item_data[:price]
+    @price = set_price(item_data[:price])
+    @quantity = item_data[:quantity]
+  end
+
+  def set_price(price)
+    price.delete('$').to_f
   end
 end

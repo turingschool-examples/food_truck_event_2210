@@ -1,10 +1,14 @@
+require 'date'
+
 class Event
   attr_reader :name,
-              :food_trucks
+              :food_trucks,
+              :start_date
 
   def initialize(name)
     @name = name
     @food_trucks = []
+    @start_date = (Date.today - 3)
   end
 
   def add_food_truck(food_truck)
@@ -60,5 +64,9 @@ class Event
       names << item.name 
     end
     names.sort
+  end
+
+  def start_date
+    @start_date.strftime('%m/%d/%Y')
   end
 end

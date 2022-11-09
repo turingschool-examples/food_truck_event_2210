@@ -60,17 +60,14 @@ describe FoodTruck do
       food_truck = FoodTruck.new('Rocky Mountain Pies')
       item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
       item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
-      food_truck.stock(item1, 25)
+      food_truck.stock(item1, 1)
 
-      expect(food_truck.check_stock(item1)).to eq(25)
+      expect(food_truck.check_stock(item1)).to eq(1)
 
       food_truck.stock(item2, 1)
 
-      expect(food_truck.check_stock(item2)).to eq(12)
-
-      food_truck.stock(item1, 1)
-
-      expect(food_truck1.inventory_value).to eq(6.25)
+      expect(food_truck.check_stock(item2)).to eq(1)
+      expect(food_truck.inventory_value).to eq(6.25)
     end
   end
 end

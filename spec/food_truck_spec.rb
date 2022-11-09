@@ -30,7 +30,10 @@ RSpec.describe FoodTruck do
     expect(food_truck.check_stock(item1)).to eq(30)
     expect(food_truck.check_stock(item2)).to eq(0)
     
-
+    food_truck.stock(item1, 25)
+    food_truck.stock(item2, 12)
+    expect(food_truck.check_stock(item1)).to eq(55)
+    expect(food_truck.inventory).to be_instance_of(Hash)
   end
 
 end

@@ -22,4 +22,10 @@ class Event
       food_truck.check_stock(item) > 0
     end
   end
+
+  def total_item_quantity(item)
+    @food_trucks.map do |food_truck|
+      food_truck.check_stock(item)
+    end.sum
+  end
 end

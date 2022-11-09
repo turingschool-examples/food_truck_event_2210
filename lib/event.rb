@@ -3,9 +3,11 @@
 # This is the Event Class
 class Event
 
-  attr_reader :title
-  
-  def initialize(title)
-    @title = title
+  attr_reader :name,
+              :food_trucks
+
+  def initialize(name)
+    @name        = name
+    @food_trucks = []
   end
 end

@@ -56,7 +56,7 @@ RSpec.describe Event do
     expect(event.food_truck_names).to eq(['Rocky Mountain Pies', 'Ba-Nom-a-Nom', 'Palisade Peach Shack'])
   end
 
-  it 'can list food trucks with items in stock ' do
+  it 'can list food trucks with items in stock' do
     food_truck1.stock(item1, 35)
     food_truck1.stock(item2, 7)
 
@@ -71,5 +71,71 @@ RSpec.describe Event do
     
     expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
     expect(event.food_trucks_that_sell(item4)).to eq([food_truck2])
+  end
+
+  it 'can report total inventory' do
+    food_truck1.stock(item1, 35)
+    food_truck1.stock(item2, 7)
+
+    food_truck2.stock(item4, 50)
+    food_truck2.stock(item3, 25)
+
+    food_truck3.stock(item1, 65)
+
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+
+    expect(event.total_inventory).to eq(
+      {
+        item1 => {
+          quantity: 100,
+          food_trucks: [food_truck1, food_truck3]
+        },
+        item2 => {
+          quantity: 7,
+          food_trucks: [food_truck1]
+        },
+        item3 => {
+          quantity: 25,
+          food_trucks: [food_truck2]
+        },
+        item4 => {
+          quantity: 50,
+          food_trucks: [food_truck2]
+        },
+      })
+  end
+
+  xit 'can alphabetically sort the names of the items that vendors have' do
+    food_truck1.stock(item1, 35)
+    food_truck1.stock(item2, 7)
+
+    food_truck2.stock(item4, 50)
+    food_truck2.stock(item3, 25)
+
+    food_truck3.stock(item1, 65)
+
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+    
+    expect(event.sorted_item_list).to eq(['Apple Pie (Slice)', 'Banana Nice Cream', 'Peach Pie (Slice)', 'Peach-Raspberry Nice Cream' ])
+  end
+
+  xit 'can list overstocked items' do
+    food_truck1.stock(item1, 35)
+    food_truck1.stock(item2, 7)
+
+    food_truck2.stock(item4, 50)
+    food_truck2.stock(item3, 25)
+
+    food_truck3.stock(item1, 65)
+
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
+    
+    expect(event.overstocked_items).to eq([item1])
   end
 end

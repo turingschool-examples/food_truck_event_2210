@@ -23,4 +23,33 @@ class Event
     end
     selling_food_trucks
   end
+
+  def total_inventory
+    inventory_hash = Hash.new
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |item, quantity|
+        if inventory_hash[item].nil?
+          inventory_hash[item] = Hash.new
+        end
+        if inventory_hash[item][:quantity].nil?
+          inventory_hash[item][:quantity] = quantity
+        else
+          inventory_hash[item][:quantity] += quantity
+        end
+        if inventory_hash[item][:food_trucks].nil?
+          inventory_hash[item][:food_trucks] = [food_truck]
+        else
+          inventory_hash[item][:food_trucks] << food_truck
+        end
+      end
+    end
+    inventory_hash
+  end
+
+  def sorted_item_list
+  end
+
+  def overstocked_items 
+    
+  end
 end

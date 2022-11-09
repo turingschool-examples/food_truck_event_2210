@@ -36,4 +36,11 @@ class Event
       quantity <= 50
     end
   end
+
+  def menu
+    items = food_trucks.flat_map do |truck|
+      truck.inventory.keys
+    end.uniq
+    items.map { |item| item.name }.sort
+  end
 end

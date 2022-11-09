@@ -57,6 +57,19 @@ RSpec.describe Event do
     end
   end
 
+  describe '#total_quantity' do
+    it 'returns the total number of a given item at the event' do
+      food_truck1.stock(item1, 55)
+      food_truck1.stock(item2, 33)
+      food_truck2.stock(item1, 10)
+      food_truck2.stock(item2, 22)
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2)
+      expect(event.total_quantity(item1)).to eq(65)
+      expect(event.total_quantity(item2)).to eq(55)
+    end
+  end
+
   describe '#overstocked_items' do
     it 'returns an array of items who are overstocked' do
       food_truck1.stock(item1, 55)
@@ -94,8 +107,8 @@ RSpec.describe Event do
       event.add_food_truck(food_truck2)
       expect(event.item_index).to eq(
         {
-          item1: { total_inventory: 65, sold_by: [food_truck1, food_truck2] },
-          item2: { total_inventory: 55, sold_by: [food_truck1, food_truck2] }
+          item1: { total_quantity: 65, sold_by: [food_truck1, food_truck2] },
+          item2: { total_quantity: 55, sold_by: [food_truck1, food_truck2] }
         }
       )
     end
